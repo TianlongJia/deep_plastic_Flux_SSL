@@ -1,0 +1,1590 @@
+####### overrides: ['hydra.verbose=true', 'config=pretrain/swav/swav_1_gpu_resnet50_flux.yaml', 'config.DATA.TRAIN.DATASET_NAMES=[Flux]', 'config.DATA.TRAIN.DATA_SOURCES=[disk_folder]', 'config.DATA.TRAIN.DATA_PATHS=[/home/tjian/Data/Flux/images_pretrain_200K/train]', 'config.DATA.TRAIN.BATCHSIZE_PER_REPLICA=64', 'config.OPTIMIZER.num_epochs=300', 'config.OPTIMIZER.param_schedulers.lr.lengths=[0.025, 0.975]', 'config.CHECKPOINT.DIR=/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_300e/vissl_200_to', 'config.HOOKS.TENSORBOARD_SETUP.USE_TENSORBOARD=False', 'config.WEIGHTS_INIT.PARAMS_FILE=/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_300e/vissl_160_to_200e/model_phase40.torch', 'config.WEIGHTS_INIT.APPEND_PREFIX=trunk._feature_blocks.', 'config.DISTRIBUTED.NUM_PROC_PER_NODE=1']
+INFO 2024-09-30 18:19:07,201 slurm.py:  21: SLURM job: node_name: gpu001, node_id: 0
+/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/vissl/utils/hydra_config.py:207: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  with initialize_config_module(config_module="vissl.config"):
+INFO 2024-09-30 18:19:10,729 train.py:  94: Env set for rank: 0, dist_rank: 0
+INFO 2024-09-30 18:19:10,909 env.py:  50: BASH_ENV:	/usr/share/lmod/lmod/init/bash
+INFO 2024-09-30 18:19:10,910 env.py:  50: BASH_FUNC_ml%%:	() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+INFO 2024-09-30 18:19:10,910 env.py:  50: BASH_FUNC_module%%:	() {  eval $($LMOD_CMD bash "$@") && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+INFO 2024-09-30 18:19:10,911 env.py:  50: BASH_FUNC_scl%%:	() {  if [ "$1" = "load" -o "$1" = "unload" ]; then
+ eval "module $@";
+ else
+ /usr/bin/scl "$@";
+ fi
+}
+INFO 2024-09-30 18:19:10,911 env.py:  50: BASH_FUNC_which%%:	() {  ( alias;
+ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+}
+INFO 2024-09-30 18:19:10,911 env.py:  50: CMD_WLM_CLUSTER_NAME:	delftblue
+INFO 2024-09-30 18:19:10,911 env.py:  50: CONDA_DEFAULT_ENV:	vissl_env
+INFO 2024-09-30 18:19:10,912 env.py:  50: CONDA_EXE:	/apps/generic/miniconda3/4.12.0/bin/conda
+INFO 2024-09-30 18:19:10,912 env.py:  50: CONDA_PREFIX:	/home/tjian/.conda/envs/vissl_env
+INFO 2024-09-30 18:19:10,912 env.py:  50: CONDA_PROMPT_MODIFIER:	(vissl_env) 
+INFO 2024-09-30 18:19:10,912 env.py:  50: CONDA_PYTHON_EXE:	/apps/generic/miniconda3/4.12.0/bin/python
+INFO 2024-09-30 18:19:10,913 env.py:  50: CONDA_SHLVL:	1
+INFO 2024-09-30 18:19:10,913 env.py:  50: CPATH:	/beegfs/apps/generic/cuda-11.7/include:/cm/shared/apps/slurm/current/include
+INFO 2024-09-30 18:19:10,913 env.py:  50: CUDA_PATH:	/beegfs/apps/generic/cuda-11.7
+INFO 2024-09-30 18:19:10,913 env.py:  50: CUDA_VISIBLE_DEVICES:	0
+INFO 2024-09-30 18:19:10,913 env.py:  50: DBUS_SESSION_BUS_ADDRESS:	unix:path=/run/user/554700/bus
+INFO 2024-09-30 18:19:10,914 env.py:  50: DISPLAY:	localhost:16.0
+INFO 2024-09-30 18:19:10,914 env.py:  50: ENABLE_LMOD:	1
+INFO 2024-09-30 18:19:10,914 env.py:  50: ENVIRONMENT:	BATCH
+INFO 2024-09-30 18:19:10,914 env.py:  50: FPATH:	/usr/share/lmod/lmod/init/ksh_funcs
+INFO 2024-09-30 18:19:10,914 env.py:  50: GPU_DEVICE_ORDINAL:	0
+INFO 2024-09-30 18:19:10,915 env.py:  50: HISTCONTROL:	ignoredups
+INFO 2024-09-30 18:19:10,915 env.py:  50: HISTSIZE:	1000
+INFO 2024-09-30 18:19:10,915 env.py:  50: HOME:	/home/tjian
+INFO 2024-09-30 18:19:10,915 env.py:  50: HOSTNAME:	gpu001
+INFO 2024-09-30 18:19:10,915 env.py:  50: KRB5CCNAME:	FILE:/tmp/krb5cc_554700_NW0etx
+INFO 2024-09-30 18:19:10,916 env.py:  50: LANG:	en_US.UTF-8
+INFO 2024-09-30 18:19:10,916 env.py:  50: LD_LIBRARY_PATH:	/beegfs/apps/generic/cuda-11.7/lib64:/cm/shared/apps/slurm/current/lib64
+INFO 2024-09-30 18:19:10,916 env.py:  50: LESSOPEN:	||/usr/bin/lesspipe.sh %s
+INFO 2024-09-30 18:19:10,916 env.py:  50: LIBRARY_PATH:	/beegfs/apps/generic/cuda-11.7/lib64:/cm/shared/apps/slurm/current/lib64
+INFO 2024-09-30 18:19:10,917 env.py:  50: LMOD_CMD:	/usr/share/lmod/lmod/libexec/lmod
+INFO 2024-09-30 18:19:10,917 env.py:  50: LMOD_COLORIZE:	yes
+INFO 2024-09-30 18:19:10,917 env.py:  50: LMOD_DIR:	/usr/share/lmod/lmod/libexec
+INFO 2024-09-30 18:19:10,917 env.py:  50: LMOD_FULL_SETTARG_SUPPORT:	no
+INFO 2024-09-30 18:19:10,918 env.py:  50: LMOD_PACKAGE_PATH:	/etc/lmod
+INFO 2024-09-30 18:19:10,918 env.py:  50: LMOD_PKG:	/usr/share/lmod/lmod
+INFO 2024-09-30 18:19:10,918 env.py:  50: LMOD_PREPEND_BLOCK:	normal
+INFO 2024-09-30 18:19:10,918 env.py:  50: LMOD_ROOT:	/usr/share/lmod
+INFO 2024-09-30 18:19:10,918 env.py:  50: LMOD_SETTARG_CMD:	:
+INFO 2024-09-30 18:19:10,919 env.py:  50: LMOD_SETTARG_FULL_SUPPORT:	no
+INFO 2024-09-30 18:19:10,919 env.py:  50: LMOD_SYSTEM_DEFAULT_MODULES:	DefaultModules
+INFO 2024-09-30 18:19:10,919 env.py:  50: LMOD_VERSION:	8.4
+INFO 2024-09-30 18:19:10,919 env.py:  50: LMOD_arch:	x86_64
+INFO 2024-09-30 18:19:10,919 env.py:  50: LMOD_sys:	Linux
+INFO 2024-09-30 18:19:10,920 env.py:  50: LOADEDMODULES:	slurm/current:DefaultModules:miniconda3/4.12.0:cuda/11.7
+INFO 2024-09-30 18:19:10,920 env.py:  50: LOCAL_RANK:	0
+INFO 2024-09-30 18:19:10,920 env.py:  50: LOGNAME:	tjian
+INFO 2024-09-30 18:19:10,920 env.py:  50: LS_COLORS:	rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.m4a=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.oga=01;36:*.opus=01;36:*.spx=01;36:*.xspf=01;36:
+INFO 2024-09-30 18:19:10,920 env.py:  50: MAIL:	/var/spool/mail/tjian
+INFO 2024-09-30 18:19:10,921 env.py:  50: MANPATH:	/cm/shared/apps/slurm/current/man:/usr/share/lmod/lmod/share/man:/usr/local/share/man:/usr/share/man:/cm/local/apps/environment-modules/current/share/man
+INFO 2024-09-30 18:19:10,921 env.py:  50: MINICONDA3_ROOT:	/apps/generic/miniconda3/4.12.0
+INFO 2024-09-30 18:19:10,921 env.py:  50: MODULEPATH:	/etc/scl/modulefiles:/apps/noarch/modulefiles:/apps/generic/modulefiles
+INFO 2024-09-30 18:19:10,921 env.py:  50: MODULEPATH_ROOT:	/usr/share/modulefiles
+INFO 2024-09-30 18:19:10,921 env.py:  50: MODULESHOME:	/usr/share/lmod/lmod
+INFO 2024-09-30 18:19:10,922 env.py:  50: NCCL_DEBUG:	INFO
+INFO 2024-09-30 18:19:10,922 env.py:  50: OLDPWD:	/home/tjian
+INFO 2024-09-30 18:19:10,922 env.py:  50: PATH:	/home/tjian/.conda/envs/vissl_env/bin:/apps/generic/miniconda3/4.12.0/condabin:/beegfs/apps/generic/cuda-11.7/bin:/apps/generic/miniconda3/4.12.0/condabin:/home/tjian/.local/bin:/home/tjian/bin:/cm/shared/apps/slurm/current/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+INFO 2024-09-30 18:19:10,922 env.py:  50: PMI_FD:	11
+INFO 2024-09-30 18:19:10,922 env.py:  50: PMI_JOBID:	4625889.0
+INFO 2024-09-30 18:19:10,923 env.py:  50: PMI_RANK:	0
+INFO 2024-09-30 18:19:10,923 env.py:  50: PMI_SIZE:	1
+INFO 2024-09-30 18:19:10,923 env.py:  50: PWD:	/scratch/tjian/PythonProject/deep_plastic_Flux_SSL
+INFO 2024-09-30 18:19:10,923 env.py:  50: RANK:	0
+INFO 2024-09-30 18:19:10,923 env.py:  50: ROCR_VISIBLE_DEVICES:	0
+INFO 2024-09-30 18:19:10,923 env.py:  50: SHELL:	/bin/bash
+INFO 2024-09-30 18:19:10,924 env.py:  50: SHLVL:	2
+INFO 2024-09-30 18:19:10,924 env.py:  50: SLURMD_NODENAME:	gpu001
+INFO 2024-09-30 18:19:10,924 env.py:  50: SLURM_CLUSTER_NAME:	delftblue
+INFO 2024-09-30 18:19:10,924 env.py:  50: SLURM_CONF:	/cm/shared/apps/slurm/var/etc/delftblue/slurm.conf
+INFO 2024-09-30 18:19:10,924 env.py:  50: SLURM_CPUS_ON_NODE:	1
+INFO 2024-09-30 18:19:10,925 env.py:  50: SLURM_CPUS_PER_TASK:	1
+INFO 2024-09-30 18:19:10,925 env.py:  50: SLURM_CPU_BIND:	quiet,mask_cpu:0x100000000000
+INFO 2024-09-30 18:19:10,925 env.py:  50: SLURM_CPU_BIND_LIST:	0x100000000000
+INFO 2024-09-30 18:19:10,925 env.py:  50: SLURM_CPU_BIND_TYPE:	mask_cpu:
+INFO 2024-09-30 18:19:10,925 env.py:  50: SLURM_CPU_BIND_VERBOSE:	quiet
+INFO 2024-09-30 18:19:10,926 env.py:  50: SLURM_DISTRIBUTION:	cyclic
+INFO 2024-09-30 18:19:10,926 env.py:  50: SLURM_GPUS_ON_NODE:	1
+INFO 2024-09-30 18:19:10,926 env.py:  50: SLURM_GPUS_PER_TASK:	1
+INFO 2024-09-30 18:19:10,926 env.py:  50: SLURM_GTIDS:	0
+INFO 2024-09-30 18:19:10,926 env.py:  50: SLURM_JOBID:	4625889
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_ACCOUNT:	research-ceg-wm
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_CPUS_PER_NODE:	1
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_CPUS_PER_NODE_PACK_GROUP_0:	1
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_GID:	100513
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_GPUS:	3
+INFO 2024-09-30 18:19:10,927 env.py:  50: SLURM_JOB_ID:	4625889
+INFO 2024-09-30 18:19:10,928 env.py:  50: SLURM_JOB_NAME:	RN50_200K_300e
+INFO 2024-09-30 18:19:10,928 env.py:  50: SLURM_JOB_NODELIST:	gpu001
+INFO 2024-09-30 18:19:10,928 env.py:  50: SLURM_JOB_NUM_NODES:	1
+INFO 2024-09-30 18:19:10,928 env.py:  50: SLURM_JOB_PARTITION:	gpu-v100
+INFO 2024-09-30 18:19:10,928 env.py:  50: SLURM_JOB_QOS:	normal
+INFO 2024-09-30 18:19:10,929 env.py:  50: SLURM_JOB_UID:	554700
+INFO 2024-09-30 18:19:10,929 env.py:  50: SLURM_JOB_USER:	tjian
+INFO 2024-09-30 18:19:10,929 env.py:  50: SLURM_LAUNCH_NODE_IPADDR:	172.21.4.17
+INFO 2024-09-30 18:19:10,929 env.py:  50: SLURM_LOCALID:	0
+INFO 2024-09-30 18:19:10,929 env.py:  50: SLURM_MEM_PER_CPU:	102400
+INFO 2024-09-30 18:19:10,930 env.py:  50: SLURM_MPI_TYPE:	pmi2
+INFO 2024-09-30 18:19:10,930 env.py:  50: SLURM_NNODES:	1
+INFO 2024-09-30 18:19:10,930 env.py:  50: SLURM_NODEID:	0
+INFO 2024-09-30 18:19:10,930 env.py:  50: SLURM_NODELIST:	gpu001
+INFO 2024-09-30 18:19:10,930 env.py:  50: SLURM_NODE_ALIASES:	(null)
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_NPROCS:	1
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_NTASKS:	1
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_PRIO_PROCESS:	0
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_PROCID:	0
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_ROOT:	/cm/shared/apps/slurm/current
+INFO 2024-09-30 18:19:10,931 env.py:  50: SLURM_SRUN_COMM_HOST:	172.21.4.17
+INFO 2024-09-30 18:19:10,932 env.py:  50: SLURM_SRUN_COMM_PORT:	43823
+INFO 2024-09-30 18:19:10,932 env.py:  50: SLURM_STEPID:	0
+INFO 2024-09-30 18:19:10,932 env.py:  50: SLURM_STEP_GPUS:	3
+INFO 2024-09-30 18:19:10,932 env.py:  50: SLURM_STEP_ID:	0
+INFO 2024-09-30 18:19:10,932 env.py:  50: SLURM_STEP_LAUNCHER_PORT:	43823
+INFO 2024-09-30 18:19:10,933 env.py:  50: SLURM_STEP_NODELIST:	gpu001
+INFO 2024-09-30 18:19:10,933 env.py:  50: SLURM_STEP_NUM_NODES:	1
+INFO 2024-09-30 18:19:10,933 env.py:  50: SLURM_STEP_NUM_TASKS:	1
+INFO 2024-09-30 18:19:10,933 env.py:  50: SLURM_STEP_TASKS_PER_NODE:	1
+INFO 2024-09-30 18:19:10,933 env.py:  50: SLURM_SUBMIT_DIR:	/scratch/tjian/PythonProject/deep_plastic_Flux_SSL
+INFO 2024-09-30 18:19:10,934 env.py:  50: SLURM_SUBMIT_HOST:	login03
+INFO 2024-09-30 18:19:10,934 env.py:  50: SLURM_TASKS_PER_NODE:	1
+INFO 2024-09-30 18:19:10,934 env.py:  50: SLURM_TASK_PID:	2006684
+INFO 2024-09-30 18:19:10,934 env.py:  50: SLURM_TOPOLOGY_ADDR:	gpu001
+INFO 2024-09-30 18:19:10,934 env.py:  50: SLURM_TOPOLOGY_ADDR_PATTERN:	node
+INFO 2024-09-30 18:19:10,935 env.py:  50: SLURM_UMASK:	0022
+INFO 2024-09-30 18:19:10,935 env.py:  50: SLURM_WORKING_CLUSTER:	delftblue:head01:6817:9472:109
+INFO 2024-09-30 18:19:10,935 env.py:  50: SRUN_DEBUG:	3
+INFO 2024-09-30 18:19:10,935 env.py:  50: SSH_CLIENT:	131.180.58.208 59230 22
+INFO 2024-09-30 18:19:10,935 env.py:  50: SSH_CONNECTION:	131.180.58.208 59230 131.180.67.15 22
+INFO 2024-09-30 18:19:10,936 env.py:  50: SSH_TTY:	/dev/pts/63
+INFO 2024-09-30 18:19:10,936 env.py:  50: S_COLORS:	auto
+INFO 2024-09-30 18:19:10,936 env.py:  50: TERM:	xterm
+INFO 2024-09-30 18:19:10,936 env.py:  50: TMOUT:	36000
+INFO 2024-09-30 18:19:10,936 env.py:  50: TMPDIR:	/tmp
+INFO 2024-09-30 18:19:10,937 env.py:  50: USER:	tjian
+INFO 2024-09-30 18:19:10,937 env.py:  50: WORLD_SIZE:	1
+INFO 2024-09-30 18:19:10,937 env.py:  50: XDG_RUNTIME_DIR:	/run/user/554700
+INFO 2024-09-30 18:19:10,937 env.py:  50: XDG_SESSION_ID:	31900
+INFO 2024-09-30 18:19:10,937 env.py:  50: _:	/cm/shared/apps/slurm/current/bin/srun
+INFO 2024-09-30 18:19:10,937 env.py:  50: _CE_CONDA:	
+INFO 2024-09-30 18:19:10,938 env.py:  50: _CE_M:	
+INFO 2024-09-30 18:19:10,938 env.py:  50: _LMFILES_:	/apps/generic/modulefiles/slurm/current.lua:/apps/noarch/modulefiles/DefaultModules.lua:/apps/generic/modulefiles/miniconda3/4.12.0.lua:/apps/generic/modulefiles/cuda/11.7.lua
+INFO 2024-09-30 18:19:10,938 env.py:  50: _ModuleTable001_:	X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXtEZWZhdWx0TW9kdWxlcz17WyJmbiJdPSIvYXBwcy9ub2FyY2gvbW9kdWxlZmlsZXMvRGVmYXVsdE1vZHVsZXMubHVhIixbImZ1bGxOYW1lIl09IkRlZmF1bHRNb2R1bGVzIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iRGVmYXVsdE1vZHVsZXMiLH0sY3VkYT17WyJmbiJdPSIvYXBwcy9nZW5lcmljL21vZHVsZWZpbGVzL2N1ZGEvMTEuNy5sdWEiLFsiZnVsbE5hbWUiXT0iY3VkYS8xMS43IixbImxvYWRPcmRl
+INFO 2024-09-30 18:19:10,938 env.py:  50: _ModuleTable002_:	ciJdPTQscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3VkYS8xMS43Iix9LG1pbmljb25kYTM9e1siZm4iXT0iL2FwcHMvZ2VuZXJpYy9tb2R1bGVmaWxlcy9taW5pY29uZGEzLzQuMTIuMC5sdWEiLFsiZnVsbE5hbWUiXT0ibWluaWNvbmRhMy80LjEyLjAiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJtaW5pY29uZGEzIix9LHNsdXJtPXtbImZuIl09Ii9hcHBzL2dlbmVyaWMvbW9kdWxlZmlsZXMvc2x1cm0vY3VycmVudC5sdWEiLFsiZnVsbE5hbWUiXT0ic2x1cm0vY3VycmVudCIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9
+INFO 2024-09-30 18:19:10,938 env.py:  50: _ModuleTable003_:	LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InNsdXJtIix9LH0sbXBhdGhBPXsiL2V0Yy9zY2wvbW9kdWxlZmlsZXMiLCIvYXBwcy9ub2FyY2gvbW9kdWxlZmlsZXMiLCIvYXBwcy9nZW5lcmljL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL25vYXJjaC9tb2R1bGVmaWxlczovYXBwcy9nZW5lcmljL21vZHVsZWZpbGVzIix9
+INFO 2024-09-30 18:19:10,939 env.py:  50: _ModuleTable_Sz_:	3
+INFO 2024-09-30 18:19:10,939 env.py:  50: __Init_Default_Modules:	1
+INFO 2024-09-30 18:19:10,939 env.py:  50: __LMOD_REF_COUNT_CPATH:	/beegfs/apps/generic/cuda-11.7/include:1;/cm/shared/apps/slurm/current/include:1
+INFO 2024-09-30 18:19:10,939 env.py:  50: __LMOD_REF_COUNT_LD_LIBRARY_PATH:	/beegfs/apps/generic/cuda-11.7/lib64:1;/cm/shared/apps/slurm/current/lib64:1
+INFO 2024-09-30 18:19:10,940 env.py:  50: __LMOD_REF_COUNT_LIBRARY_PATH:	/beegfs/apps/generic/cuda-11.7/lib64:1;/cm/shared/apps/slurm/current/lib64:1
+INFO 2024-09-30 18:19:10,940 env.py:  50: __LMOD_REF_COUNT_LOADEDMODULES:	slurm/current:1;DefaultModules:1;miniconda3/4.12.0:1;cuda/11.7:1
+INFO 2024-09-30 18:19:10,940 env.py:  50: __LMOD_REF_COUNT_MANPATH:	/cm/shared/apps/slurm/current/man:1;/usr/share/lmod/lmod/share/man:1;/usr/local/share/man:1;/usr/share/man:1;/cm/local/apps/environment-modules/current/share/man:1
+INFO 2024-09-30 18:19:10,940 env.py:  50: __LMOD_REF_COUNT_MODULEPATH:	/etc/scl/modulefiles:1;/apps/noarch/modulefiles:1;/apps/generic/modulefiles:1
+INFO 2024-09-30 18:19:10,940 env.py:  50: __LMOD_REF_COUNT_PATH:	/beegfs/apps/generic/cuda-11.7/bin:1;/apps/generic/miniconda3/4.12.0/condabin:1;/home/tjian/.local/bin:1;/home/tjian/bin:1;/cm/shared/apps/slurm/current/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1
+INFO 2024-09-30 18:19:10,941 env.py:  50: __LMOD_REF_COUNT__LMFILES_:	/apps/generic/modulefiles/slurm/current.lua:1;/apps/noarch/modulefiles/DefaultModules.lua:1;/apps/generic/modulefiles/miniconda3/4.12.0.lua:1;/apps/generic/modulefiles/cuda/11.7.lua:1
+INFO 2024-09-30 18:19:10,941 env.py:  50: __LMOD_SET_FPATH:	1
+INFO 2024-09-30 18:19:10,941 env.py:  50: which_declare:	declare -f
+INFO 2024-09-30 18:19:10,941 misc.py: 162: Set start method of multiprocessing to forkserver
+INFO 2024-09-30 18:19:10,941 train.py: 105: Setting seed....
+INFO 2024-09-30 18:19:10,942 misc.py: 174: MACHINE SEED: 0
+INFO 2024-09-30 18:19:11,119 hydra_config.py: 215: Training with config:
+INFO 2024-09-30 18:19:11,129 hydra_config.py: 224: {'CHECKPOINT': {'APPEND_DISTR_RUN_ID': False,
+                'AUTO_RESUME': True,
+                'BACKEND': 'disk',
+                'CHECKPOINT_FREQUENCY': 5,
+                'CHECKPOINT_ITER_FREQUENCY': -1,
+                'DIR': '/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_300e/vissl_200_to',
+                'LATEST_CHECKPOINT_RESUME_FILE_NUM': 1,
+                'OVERWRITE_EXISTING': False,
+                'USE_SYMLINK_CHECKPOINT_FOR_RESUME': False},
+ 'CLUSTERFIT': {'CLUSTER_BACKEND': 'faiss',
+                'DATA_LIMIT': -1,
+                'DATA_LIMIT_SAMPLING': {'SEED': 0},
+                'FEATURES': {'DATASET_NAME': '',
+                             'DATA_PARTITION': 'TRAIN',
+                             'DIMENSIONALITY_REDUCTION': 0,
+                             'EXTRACT': False,
+                             'LAYER_NAME': '',
+                             'PATH': '.',
+                             'TEST_PARTITION': 'TEST'},
+                'NUM_CLUSTERS': 16000,
+                'NUM_ITER': 50,
+                'OUTPUT_DIR': '.'},
+ 'DATA': {'DDP_BUCKET_CAP_MB': 25,
+          'ENABLE_ASYNC_GPU_COPY': True,
+          'NUM_DATALOADER_WORKERS': 8,
+          'PIN_MEMORY': True,
+          'TEST': {'BASE_DATASET': 'generic_ssl',
+                   'BATCHSIZE_PER_REPLICA': 256,
+                   'COLLATE_FUNCTION': 'default_collate',
+                   'COLLATE_FUNCTION_PARAMS': {},
+                   'COPY_DESTINATION_DIR': '',
+                   'COPY_TO_LOCAL_DISK': False,
+                   'DATASET_NAMES': ['imagenet1k_folder'],
+                   'DATA_LIMIT': -1,
+                   'DATA_LIMIT_SAMPLING': {'IS_BALANCED': False,
+                                           'SEED': 0,
+                                           'SKIP_NUM_SAMPLES': 0},
+                   'DATA_PATHS': [],
+                   'DATA_SOURCES': [],
+                   'DEFAULT_GRAY_IMG_SIZE': 224,
+                   'DROP_LAST': False,
+                   'ENABLE_QUEUE_DATASET': False,
+                   'INPUT_KEY_NAMES': ['data'],
+                   'LABEL_PATHS': [],
+                   'LABEL_SOURCES': [],
+                   'LABEL_TYPE': 'sample_index',
+                   'MMAP_MODE': True,
+                   'NEW_IMG_PATH_PREFIX': '',
+                   'POWER_LAW_SAMPLER': {'ENABLED': False, 'POWER': 1.0},
+                   'RANDOM_SYNTHETIC_IMAGES': False,
+                   'RANDOM_SYNTHETIC_LABELS': 0,
+                   'REMOVE_IMG_PATH_PREFIX': '',
+                   'STRATIFIED_SAMPLER': {'CLASSES_PER_BATCH': 2,
+                                          'ENABLED': False,
+                                          'STEP_PER_EPOCH': 1250,
+                                          'UNIQUE_CLASSES': False},
+                   'TARGET_KEY_NAMES': ['label'],
+                   'TRANSFORMS': [],
+                   'USE_DEBUGGING_SAMPLER': False,
+                   'USE_STATEFUL_DISTRIBUTED_SAMPLER': False},
+          'TRAIN': {'BASE_DATASET': 'generic_ssl',
+                    'BATCHSIZE_PER_REPLICA': 64,
+                    'COLLATE_FUNCTION': 'multicrop_collator',
+                    'COLLATE_FUNCTION_PARAMS': {},
+                    'COPY_DESTINATION_DIR': '/tmp/imagenet1k/',
+                    'COPY_TO_LOCAL_DISK': False,
+                    'DATASET_NAMES': ['Flux'],
+                    'DATA_LIMIT': -1,
+                    'DATA_LIMIT_SAMPLING': {'IS_BALANCED': False,
+                                            'SEED': 0,
+                                            'SKIP_NUM_SAMPLES': 0},
+                    'DATA_PATHS': ['/home/tjian/Data/Flux/images_pretrain_200K/train'],
+                    'DATA_SOURCES': ['disk_folder'],
+                    'DEFAULT_GRAY_IMG_SIZE': 224,
+                    'DROP_LAST': True,
+                    'ENABLE_QUEUE_DATASET': False,
+                    'INPUT_KEY_NAMES': ['data'],
+                    'LABEL_PATHS': [],
+                    'LABEL_SOURCES': [],
+                    'LABEL_TYPE': 'sample_index',
+                    'MMAP_MODE': True,
+                    'NEW_IMG_PATH_PREFIX': '',
+                    'POWER_LAW_SAMPLER': {'ENABLED': False, 'POWER': 1.0},
+                    'RANDOM_SYNTHETIC_IMAGES': False,
+                    'RANDOM_SYNTHETIC_LABELS': 0,
+                    'REMOVE_IMG_PATH_PREFIX': '',
+                    'STRATIFIED_SAMPLER': {'CLASSES_PER_BATCH': 2,
+                                           'ENABLED': False,
+                                           'STEP_PER_EPOCH': 1250,
+                                           'UNIQUE_CLASSES': False},
+                    'TARGET_KEY_NAMES': ['label'],
+                    'TRANSFORMS': [{'crop_scales': [[0.14, 1], [0.05, 0.14]],
+                                    'name': 'ImgPilToMultiCrop',
+                                    'num_crops': [2, 6],
+                                    'size_crops': [160, 96],
+                                    'total_num_crops': 8},
+                                   {'name': 'RandomHorizontalFlip', 'p': 0.5},
+                                   {'name': 'ImgPilColorDistortion',
+                                    'strength': 1.0},
+                                   {'name': 'ImgPilGaussianBlur',
+                                    'p': 0.5,
+                                    'radius_max': 2.0,
+                                    'radius_min': 0.1},
+                                   {'name': 'ToTensor'},
+                                   {'mean': [0.485, 0.456, 0.406],
+                                    'name': 'Normalize',
+                                    'std': [0.229, 0.224, 0.225]}],
+                    'USE_DEBUGGING_SAMPLER': False,
+                    'USE_STATEFUL_DISTRIBUTED_SAMPLER': False}},
+ 'DISTILLATION': {'TEACHER_MODEL': {'ACTIVATION_CHECKPOINTING': {'NUM_ACTIVATION_CHECKPOINTING_SPLITS': 2,
+                                                                 'USE_ACTIVATION_CHECKPOINTING': False},
+                                    'AMP_PARAMS': {'AMP_ARGS': {'opt_level': 'O1'},
+                                                   'AMP_TYPE': 'apex',
+                                                   'USE_AMP': True},
+                                    'BASE_MODEL_NAME': 'multi_input_output_model',
+                                    'CUDA_CACHE': {'CLEAR_CUDA_CACHE': False,
+                                                   'CLEAR_FREQ': 100},
+                                    'FEATURE_EVAL_SETTINGS': {'ASSERT_HEAD_LAYER_SHAPE_INIT': True,
+                                                              'EVAL_MODE_ON': True,
+                                                              'EVAL_TRUNK_AND_HEAD': True,
+                                                              'EXTRACT_TRUNK_FEATURES_ONLY': False,
+                                                              'FREEZE_TRUNK_AND_HEAD': True,
+                                                              'FREEZE_TRUNK_ONLY': False,
+                                                              'LINEAR_EVAL_FEAT_POOL_OPS_MAP': [],
+                                                              'SHOULD_FLATTEN_FEATS': True},
+                                    'FSDP_CONFIG': {'AMP_TYPE': '01',
+                                                    'AUTO_SETUP_FSDP': False,
+                                                    'AUTO_WRAP_THRESHOLD': 0,
+                                                    'FORCE_SYNC_CUDA': False,
+                                                    'bucket_cap_mb': 0,
+                                                    'clear_autocast_cache': True,
+                                                    'compute_dtype': 'float32',
+                                                    'flatten_parameters': True,
+                                                    'fp32_reduce_scatter': False,
+                                                    'mixed_precision': True,
+                                                    'verbose': True},
+                                    'GRAD_CLIP': {'MAX_NORM': 1,
+                                                  'NORM_TYPE': 2,
+                                                  'USE_GRAD_CLIP': False},
+                                    'HEAD': {'BATCHNORM_EPS': 1e-05,
+                                             'BATCHNORM_MOMENTUM': 0.1,
+                                             'PARAMS': [['mlp',
+                                                         {'dims': [2048,
+                                                                   1000]}]],
+                                             'PARAMS_MULTIPLIER': 1.0},
+                                    'INPUT_TYPE': 'rgb',
+                                    'MULTI_INPUT_HEAD_MAPPING': [],
+                                    'NON_TRAINABLE_PARAMS': [],
+                                    'SHARDED_DDP_SETUP': {'USE_SDP': False,
+                                                          'reduce_buffer_size': -1},
+                                    'SINGLE_PASS_EVERY_CROP': False,
+                                    'SYNC_BN_CONFIG': {'CONVERT_BN_TO_SYNC_BN': True,
+                                                       'GROUP_SIZE': 8,
+                                                       'SYNC_BN_TYPE': 'apex'},
+                                    'TEMP_FROZEN_PARAMS_ITER_MAP': [['module.heads.0.prototypes0.weight',
+                                                                     313]],
+                                    'TRUNK': {'BEIT': {'ATTENTION_DROPOUT_RATE': 0,
+                                                       'DROPOUT_RATE': 0,
+                                                       'DROP_PATH_RATE': 0,
+                                                       'HIDDEN_DIM': 768,
+                                                       'IMAGE_SIZE': 224,
+                                                       'INIT_VALUES': False,
+                                                       'MLP_RATIO': 4.0,
+                                                       'NUM_HEADS': 12,
+                                                       'NUM_LAYERS': 12,
+                                                       'PATCH_SIZE': 16,
+                                                       'QKV_BIAS': False,
+                                                       'QK_SCALE': False,
+                                                       'USE_ABS_POS_EMB': True,
+                                                       'USE_MEAN_POOLING': True,
+                                                       'USE_REL_POS_BIAS': False,
+                                                       'USE_SHARED_REL_POS_BIAS': False},
+                                              'CONVIT': {'CLASS_TOKEN_IN_LOCAL_LAYERS': False,
+                                                         'LOCALITY_DIM': 10,
+                                                         'LOCALITY_STRENGTH': 1.0,
+                                                         'N_GPSA_LAYERS': 10,
+                                                         'USE_LOCAL_INIT': True},
+                                              'CONVNEXT': {'DEPTH': [3,
+                                                                     3,
+                                                                     27,
+                                                                     3],
+                                                           'DIMS': [96,
+                                                                    192,
+                                                                    384,
+                                                                    768],
+                                                           'DROP_PATH_RATE': 0.0},
+                                              'EFFICIENT_NETS': {},
+                                              'MOBILE_NET': {'NAME': 'mobilenetv3_large_100',
+                                                             'TIMM_BN': False},
+                                              'NAME': 'resnet',
+                                              'REGNET': {},
+                                              'RESNETS': {'DEPTH': 50,
+                                                          'GROUPNORM_GROUPS': 32,
+                                                          'GROUPS': 1,
+                                                          'LAYER4_STRIDE': 2,
+                                                          'NORM': 'BatchNorm',
+                                                          'STANDARDIZE_CONVOLUTIONS': False,
+                                                          'WIDTH_MULTIPLIER': 1,
+                                                          'WIDTH_PER_GROUP': 64,
+                                                          'ZERO_INIT_RESIDUAL': False},
+                                              'RESNETS_SK': {'DEPTH': 152,
+                                                             'SK_RATIO': 0.0625,
+                                                             'WIDTH_MULTIPLIER': 3},
+                                              'SWIN_TRANSFORMER': {'ATTENTION_DROPOUT_RATE': 0,
+                                                                   'DEPTHS': [2,
+                                                                              2,
+                                                                              6,
+                                                                              2],
+                                                                   'DROPOUT_RATE': 0,
+                                                                   'DROP_PATH_RATE': 0.1,
+                                                                   'EMBED_DIM': 96,
+                                                                   'IMAGE_SIZE': 224,
+                                                                   'MLP_RATIO': 4.0,
+                                                                   'NUM_HEADS': [3,
+                                                                                 6,
+                                                                                 12,
+                                                                                 24],
+                                                                   'PATCH_SIZE': 4,
+                                                                   'QKV_BIAS': True,
+                                                                   'QK_SCALE': False,
+                                                                   'WINDOW_SIZE': 7,
+                                                                   'name': None},
+                                              'VISION_TRANSFORMERS': {'ATTENTION_DROPOUT_RATE': 0,
+                                                                      'CHECKPOINT_BLOCK': False,
+                                                                      'CHECKPOINT_MLP': False,
+                                                                      'CLASSIFIER': 'token',
+                                                                      'DROPOUT_RATE': 0,
+                                                                      'DROP_PATH_RATE': 0,
+                                                                      'HIDDEN_DIM': 768,
+                                                                      'IMAGE_SIZE': 224,
+                                                                      'MASKED_IMAGE_MODELING': {'NAME': '',
+                                                                                                'PARAMS': {}},
+                                                                      'MLP_DIM': 3072,
+                                                                      'NUM_HEADS': 12,
+                                                                      'NUM_LAYERS': 12,
+                                                                      'PATCH_SIZE': 16,
+                                                                      'QKV_BIAS': False,
+                                                                      'QK_SCALE': False,
+                                                                      'name': None},
+                                              'XCIT': {'ATTENTION_DROPOUT_RATE': 0,
+                                                       'CHECKPOINT_ATTN_BLOCK': False,
+                                                       'CHECKPOINT_XCA_BLOCK': False,
+                                                       'DROPOUT_RATE': 0,
+                                                       'DROP_PATH_RATE': 0.05,
+                                                       'ETA': 1,
+                                                       'HIDDEN_DIM': 384,
+                                                       'IMAGE_SIZE': 224,
+                                                       'MLP_RATIO': 4.0,
+                                                       'NUM_HEADS': 8,
+                                                       'NUM_LAYERS': 12,
+                                                       'PATCH_SIZE': 16,
+                                                       'QKV_BIAS': True,
+                                                       'QK_SCALE': False,
+                                                       'TOKENS_NORM': True,
+                                                       'name': None}},
+                                    'WEIGHTS_INIT': {'APPEND_PREFIX': '',
+                                                     'PARAMS_FILE': 'please '
+                                                                    'specify '
+                                                                    'teacher '
+                                                                    'model '
+                                                                    'weights',
+                                                     'REMOVE_PREFIX': '',
+                                                     'SKIP_LAYERS': ['num_batches_tracked'],
+                                                     'STATE_DICT_KEY_NAME': 'classy_state_dict'},
+                                    '_MODEL_INIT_SEED': 0},
+                  'eager_teacher_init': False},
+ 'DISTRIBUTED': {'BACKEND': 'nccl',
+                 'BROADCAST_BUFFERS': True,
+                 'INIT_METHOD': 'tcp',
+                 'MANUAL_GRADIENT_REDUCTION': False,
+                 'NCCL_DEBUG': True,
+                 'NCCL_SOCKET_NTHREADS': '',
+                 'NUM_NODES': 1,
+                 'NUM_PROC_PER_NODE': 1,
+                 'RUN_ID': 'auto'},
+ 'EXTRACT_FEATURES': {'CHUNK_THRESHOLD': -1,
+                      'MAP_FEATURES_TO_IMG_NAME': False,
+                      'OUTPUT_DIR': ''},
+ 'GEO_LOCALIZATION': {'ACC_KM_THRESHOLDS': [1, 25, 200, 750, 2500],
+                      'TRAIN_LABEL_MAPPING': '/path/to/.json'},
+ 'HOOKS': {'CHECK_NAN': True,
+           'EMA_MODEL': {'DECAY': 0.9999,
+                         'EMA_DEVICE': 'gpu',
+                         'ENABLE_EMA_METERS': False,
+                         'SAVE_EMA_MODEL': False,
+                         'UPDATE_ITER': 1,
+                         'WARMUP': 0.05},
+           'LOG_GPU_STATS': True,
+           'MEMORY_SUMMARY': {'DUMP_MEMORY_ON_EXCEPTION': False,
+                              'LOG_ITERATION_NUM': 0,
+                              'PRINT_MEMORY_SUMMARY': True},
+           'MODEL_COMPLEXITY': {'COMPUTE_COMPLEXITY': False,
+                                'INPUT_SHAPE': [3, 224, 224]},
+           'PERF_STATS': {'MONITOR_PERF_STATS': True,
+                          'PERF_STAT_FREQUENCY': -1,
+                          'ROLLING_BTIME_FREQ': 313},
+           'TENSORBOARD_SETUP': {'EXPERIMENT_LOG_DIR': 'tensorboard',
+                                 'FLUSH_EVERY_N_MIN': 5,
+                                 'LOG_DIR': '.',
+                                 'LOG_PARAMS': True,
+                                 'LOG_PARAMS_EVERY_N_ITERS': 310,
+                                 'LOG_PARAMS_GRADIENTS': True,
+                                 'USE_TENSORBOARD': False}},
+ 'IMG_RETRIEVAL': {'CENTER_CROP': False,
+                   'CROP_QUERY_ROI': False,
+                   'DATASET_PATH': '',
+                   'DEBUG_MODE': False,
+                   'EVAL_BINARY_PATH': '',
+                   'EVAL_DATASET_NAME': 'Paris',
+                   'FEATS_PROCESSING_TYPE': '',
+                   'FEATURE_EXTRACTION_DIR': '',
+                   'GEM_POOL_POWER': 4.0,
+                   'IMG_SCALINGS': [1],
+                   'NORMALIZE_FEATURES': True,
+                   'NUM_DATABASE_SAMPLES': -1,
+                   'NUM_QUERY_SAMPLES': -1,
+                   'NUM_TRAINING_SAMPLES': -1,
+                   'N_PCA': 512,
+                   'RESIZE_IMG': 1024,
+                   'SAVE_FEATURES': False,
+                   'SAVE_RETRIEVAL_RANKINGS_SCORES': True,
+                   'SIMILARITY_MEASURE': 'cosine_similarity',
+                   'SPATIAL_LEVELS': 3,
+                   'TRAIN_DATASET_NAME': 'Oxford',
+                   'TRAIN_PCA_WHITENING': True,
+                   'USE_DISTRACTORS': False,
+                   'USE_FEATURE_EXTRACTION_ENGINE': False,
+                   'WHITEN_IMG_LIST': ''},
+ 'LOG_FREQUENCY': 10,
+ 'LOSS': {'CrossEntropyLoss': {'ignore_index': -1},
+          'barlow_twins_loss': {'embedding_dim': 8192,
+                                'lambda_': 0.0051,
+                                'scale_loss': 0.024},
+          'bce_logits_multiple_output_single_target': {'normalize_output': False,
+                                                       'reduction': 'none',
+                                                       'world_size': 1},
+          'cross_entropy_multiple_output_single_target': {'ignore_index': -1,
+                                                          'normalize_output': False,
+                                                          'reduction': 'mean',
+                                                          'temperature': 1.0,
+                                                          'weight': None},
+          'deepclusterv2_loss': {'BATCHSIZE_PER_REPLICA': 256,
+                                 'DROP_LAST': True,
+                                 'kmeans_iters': 10,
+                                 'memory_params': {'crops_for_mb': [0],
+                                                   'embedding_dim': 128},
+                                 'num_clusters': [3000, 3000, 3000],
+                                 'num_crops': 2,
+                                 'num_train_samples': -1,
+                                 'temperature': 0.1},
+          'dino_distillation_loss': {'student_num_crops': 10,
+                                     'student_temperature': 0.1,
+                                     'swapped_assignment': False,
+                                     'teacher_num_crops': 2,
+                                     'teacher_temperature': 0.07},
+          'dino_loss': {'crops_for_teacher': [0, 1],
+                        'ema_center': 0.9,
+                        'momentum': 0.996,
+                        'output_dim': 65536,
+                        'student_temp': 0.1,
+                        'teacher_temp_max': 0.07,
+                        'teacher_temp_min': 0.04,
+                        'teacher_temp_warmup_iters': 37500},
+          'ibot_distillation_loss': {'lambda1': 1.0,
+                                     'lambda2': 1.0,
+                                     'num_global_crops': 2,
+                                     'student_num_crops': 12,
+                                     'student_temp': 0.1,
+                                     'swapped_assignment': False,
+                                     'teacher_patch_temp': 0.07,
+                                     'teacher_temp': 0.07,
+                                     'use_teacher_prototypes': False},
+          'ibot_loss': {'center_momentum': 0.9,
+                        'center_momentum2': 0.9,
+                        'lambda1': 1.0,
+                        'lambda2': 1.0,
+                        'mim_start_epoch': 0,
+                        'num_epochs': 10,
+                        'num_global_crops': 2,
+                        'num_local_crops': 8,
+                        'out_dim': 8192,
+                        'patch_out_dim': 8192,
+                        'student_temp': 0.1,
+                        'teacher_momentum': 0.996,
+                        'teacher_patch_temp': 0.07,
+                        'teacher_temp': 0.04,
+                        'warmup_teacher_patch_temp': 0.04,
+                        'warmup_teacher_temp': 0.04,
+                        'warmup_teacher_temp_epochs': 30},
+          'moco_loss': {'embedding_dim': 128,
+                        'momentum': 0.999,
+                        'queue_size': 65536,
+                        'temperature': 0.2},
+          'msn_distillation_loss': {'student_num_crops': 12,
+                                    'student_temperature': 0.1,
+                                    'swapped_assignment': False,
+                                    'teacher_num_crops': 2},
+          'msn_loss': {'momentum': 0.996,
+                       'output_dim': 1024,
+                       'temperature': 0.1},
+          'multicrop_simclr_info_nce_loss': {'buffer_params': {'effective_batch_size': 4096,
+                                                               'embedding_dim': 128,
+                                                               'world_size': 64},
+                                             'num_crops': 2,
+                                             'temperature': 0.1},
+          'name': 'swav_loss',
+          'nce_loss_with_memory': {'loss_type': 'nce',
+                                   'loss_weights': [1.0],
+                                   'memory_params': {'embedding_dim': 128,
+                                                     'memory_size': -1,
+                                                     'momentum': 0.5,
+                                                     'norm_init': True,
+                                                     'update_mem_on_forward': True},
+                                   'negative_sampling_params': {'num_negatives': 16000,
+                                                                'type': 'random'},
+                                   'norm_constant': -1,
+                                   'norm_embedding': True,
+                                   'num_train_samples': -1,
+                                   'temperature': 0.07,
+                                   'update_mem_with_emb_index': -100},
+          'simclr_info_nce_loss': {'buffer_params': {'effective_batch_size': 4096,
+                                                     'embedding_dim': 128,
+                                                     'world_size': 64},
+                                   'temperature': 0.1},
+          'swav_distillation_loss': {'epsilon': 0.03,
+                                     'local_queue_length': 0,
+                                     'normalize_student_feats': False,
+                                     'num_crops': 6,
+                                     'num_iters': 3,
+                                     'num_prototypes': [3000],
+                                     'output_dir': '.',
+                                     'queue_start_iter': 0,
+                                     'swapped_assignment': False,
+                                     'temp_hard_assignment_iters': 0,
+                                     'temperature': 0.1,
+                                     'use_double_precision': False,
+                                     'use_student_prototypes': True,
+                                     'use_teacher_prototypes': False,
+                                     'use_two_crops_for_teacher': True},
+          'swav_loss': {'crops_for_assign': [0, 1],
+                        'embedding_dim': 128,
+                        'epsilon': 0.05,
+                        'normalize_last_layer': True,
+                        'num_crops': 8,
+                        'num_iters': 3,
+                        'num_prototypes': [3000],
+                        'output_dir': '/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_300e/vissl_200_to',
+                        'queue': {'local_queue_length': 0,
+                                  'queue_length': 0,
+                                  'start_iter': 0},
+                        'temp_hard_assignment_iters': 0,
+                        'temperature': 0.1,
+                        'use_double_precision': False},
+          'swav_momentum_loss': {'crops_for_assign': [0, 1],
+                                 'embedding_dim': 128,
+                                 'epsilon': 0.05,
+                                 'momentum': 0.99,
+                                 'momentum_eval_mode_iter_start': 0,
+                                 'normalize_last_layer': True,
+                                 'num_crops': 2,
+                                 'num_iters': 3,
+                                 'num_prototypes': [3000],
+                                 'queue': {'local_queue_length': 0,
+                                           'queue_length': 0,
+                                           'start_iter': 0},
+                                 'temperature': 0.1,
+                                 'use_double_precision': False}},
+ 'LOW_SHOT_BENCHMARK': {'FEATURES': {'PATH': ''},
+                        'LOGISTIC_REGRESSION': {'LAMBDA': 0.025, 'SEEDS': [0]},
+                        'METHOD': 'logistic_regression'},
+ 'MACHINE': {'DEVICE': 'gpu'},
+ 'METERS': {'accuracy_list_meter': {'meter_names': [],
+                                    'num_meters': 1,
+                                    'topk_values': [1]},
+            'enable_training_meter': True,
+            'mean_ap_list_meter': {'max_cpu_capacity': -1,
+                                   'meter_names': [],
+                                   'num_classes': 9605,
+                                   'num_meters': 1},
+            'model_output_mask': False,
+            'name': '',
+            'names': [],
+            'precision_at_k_list_meter': {'meter_names': [],
+                                          'num_meters': 1,
+                                          'topk_values': [1]},
+            'recall_at_k_list_meter': {'meter_names': [],
+                                       'num_meters': 1,
+                                       'topk_values': [1]}},
+ 'MODEL': {'ACTIVATION_CHECKPOINTING': {'NUM_ACTIVATION_CHECKPOINTING_SPLITS': 2,
+                                        'USE_ACTIVATION_CHECKPOINTING': False},
+           'AMP_PARAMS': {'AMP_ARGS': {'opt_level': 'O1'},
+                          'AMP_TYPE': 'apex',
+                          'USE_AMP': True},
+           'BASE_MODEL_NAME': 'multi_input_output_model',
+           'CUDA_CACHE': {'CLEAR_CUDA_CACHE': False, 'CLEAR_FREQ': 100},
+           'FEATURE_EVAL_SETTINGS': {'ASSERT_HEAD_LAYER_SHAPE_INIT': True,
+                                     'EVAL_MODE_ON': False,
+                                     'EVAL_TRUNK_AND_HEAD': False,
+                                     'EXTRACT_TRUNK_FEATURES_ONLY': False,
+                                     'FREEZE_TRUNK_AND_HEAD': False,
+                                     'FREEZE_TRUNK_ONLY': False,
+                                     'LINEAR_EVAL_FEAT_POOL_OPS_MAP': [],
+                                     'SHOULD_FLATTEN_FEATS': True},
+           'FSDP_CONFIG': {'AUTO_WRAP_THRESHOLD': 0,
+                           'FORCE_SYNC_CUDA': False,
+                           'bucket_cap_mb': 0,
+                           'clear_autocast_cache': True,
+                           'compute_dtype': torch.float32,
+                           'flatten_parameters': True,
+                           'fp32_reduce_scatter': False,
+                           'mixed_precision': True,
+                           'verbose': True},
+           'GRAD_CLIP': {'MAX_NORM': 1, 'NORM_TYPE': 2, 'USE_GRAD_CLIP': False},
+           'HEAD': {'BATCHNORM_EPS': 1e-05,
+                    'BATCHNORM_MOMENTUM': 0.1,
+                    'PARAMS': [['swav_head',
+                                {'dims': [2048, 2048, 128],
+                                 'num_clusters': [3000],
+                                 'use_bn': True}]],
+                    'PARAMS_MULTIPLIER': 1.0},
+           'INPUT_TYPE': 'rgb',
+           'MULTI_INPUT_HEAD_MAPPING': [],
+           'NON_TRAINABLE_PARAMS': [],
+           'SHARDED_DDP_SETUP': {'USE_SDP': False, 'reduce_buffer_size': -1},
+           'SINGLE_PASS_EVERY_CROP': False,
+           'SYNC_BN_CONFIG': {'CONVERT_BN_TO_SYNC_BN': True,
+                              'GROUP_SIZE': 8,
+                              'SYNC_BN_TYPE': 'apex'},
+           'TEMP_FROZEN_PARAMS_ITER_MAP': [['module.heads.0.prototypes0.weight',
+                                            313]],
+           'TRUNK': {'BEIT': {'ATTENTION_DROPOUT_RATE': 0,
+                              'DROPOUT_RATE': 0,
+                              'DROP_PATH_RATE': 0,
+                              'HIDDEN_DIM': 768,
+                              'IMAGE_SIZE': 224,
+                              'INIT_VALUES': False,
+                              'MLP_RATIO': 4.0,
+                              'NUM_HEADS': 12,
+                              'NUM_LAYERS': 12,
+                              'PATCH_SIZE': 16,
+                              'QKV_BIAS': False,
+                              'QK_SCALE': False,
+                              'USE_ABS_POS_EMB': True,
+                              'USE_MEAN_POOLING': True,
+                              'USE_REL_POS_BIAS': False,
+                              'USE_SHARED_REL_POS_BIAS': False},
+                     'CONVIT': {'CLASS_TOKEN_IN_LOCAL_LAYERS': False,
+                                'LOCALITY_DIM': 10,
+                                'LOCALITY_STRENGTH': 1.0,
+                                'N_GPSA_LAYERS': 10,
+                                'USE_LOCAL_INIT': True},
+                     'CONVNEXT': {'DEPTH': [3, 3, 27, 3],
+                                  'DIMS': [96, 192, 384, 768],
+                                  'DROP_PATH_RATE': 0.0},
+                     'EFFICIENT_NETS': {},
+                     'MOBILE_NET': {'NAME': 'mobilenetv3_large_100',
+                                    'TIMM_BN': False},
+                     'NAME': 'resnet',
+                     'REGNET': {},
+                     'RESNETS': {'DEPTH': 50,
+                                 'GROUPNORM_GROUPS': 32,
+                                 'GROUPS': 1,
+                                 'LAYER4_STRIDE': 2,
+                                 'NORM': 'BatchNorm',
+                                 'STANDARDIZE_CONVOLUTIONS': False,
+                                 'WIDTH_MULTIPLIER': 1,
+                                 'WIDTH_PER_GROUP': 64,
+                                 'ZERO_INIT_RESIDUAL': False},
+                     'RESNETS_SK': {'DEPTH': 152,
+                                    'SK_RATIO': 0.0625,
+                                    'WIDTH_MULTIPLIER': 3},
+                     'SWIN_TRANSFORMER': {'ATTENTION_DROPOUT_RATE': 0,
+                                          'DEPTHS': [2, 2, 6, 2],
+                                          'DROPOUT_RATE': 0,
+                                          'DROP_PATH_RATE': 0.1,
+                                          'EMBED_DIM': 96,
+                                          'IMAGE_SIZE': 224,
+                                          'MLP_RATIO': 4.0,
+                                          'NUM_HEADS': [3, 6, 12, 24],
+                                          'PATCH_SIZE': 4,
+                                          'QKV_BIAS': True,
+                                          'QK_SCALE': False,
+                                          'WINDOW_SIZE': 7,
+                                          'name': None},
+                     'VISION_TRANSFORMERS': {'ATTENTION_DROPOUT_RATE': 0,
+                                             'CHECKPOINT_BLOCK': False,
+                                             'CHECKPOINT_MLP': False,
+                                             'CLASSIFIER': 'token',
+                                             'DROPOUT_RATE': 0,
+                                             'DROP_PATH_RATE': 0,
+                                             'HIDDEN_DIM': 768,
+                                             'IMAGE_SIZE': 224,
+                                             'MASKED_IMAGE_MODELING': {'NAME': '',
+                                                                       'PARAMS': {}},
+                                             'MLP_DIM': 3072,
+                                             'NUM_HEADS': 12,
+                                             'NUM_LAYERS': 12,
+                                             'PATCH_SIZE': 16,
+                                             'QKV_BIAS': False,
+                                             'QK_SCALE': False,
+                                             'name': None},
+                     'XCIT': {'ATTENTION_DROPOUT_RATE': 0,
+                              'CHECKPOINT_ATTN_BLOCK': False,
+                              'CHECKPOINT_XCA_BLOCK': False,
+                              'DROPOUT_RATE': 0,
+                              'DROP_PATH_RATE': 0.05,
+                              'ETA': 1,
+                              'HIDDEN_DIM': 384,
+                              'IMAGE_SIZE': 224,
+                              'MLP_RATIO': 4.0,
+                              'NUM_HEADS': 8,
+                              'NUM_LAYERS': 12,
+                              'PATCH_SIZE': 16,
+                              'QKV_BIAS': True,
+                              'QK_SCALE': False,
+                              'TOKENS_NORM': True,
+                              'name': None}},
+           'WEIGHTS_INIT': {'APPEND_PREFIX': '',
+                            'PARAMS_FILE': '',
+                            'REMOVE_PREFIX': '',
+                            'SKIP_LAYERS': ['num_batches_tracked'],
+                            'STATE_DICT_KEY_NAME': 'classy_state_dict'},
+           '_MODEL_INIT_SEED': 0},
+ 'MONITORING': {'MONITOR_ACTIVATION_STATISTICS': 0},
+ 'MULTI_PROCESSING_METHOD': 'forkserver',
+ 'NEAREST_NEIGHBOR': {'FEATURES': {'PATH': ''},
+                      'L2_NORM_FEATS': False,
+                      'OPTIMIZE_MEMORY': False,
+                      'SIGMA': 0.1,
+                      'TOPK': 200,
+                      'USE_CUDA': True},
+ 'OPTIMIZER': {'betas': [0.9, 0.999],
+               'construct_single_param_group_only': False,
+               'head_optimizer_params': {'use_different_lr': False,
+                                         'use_different_wd': False,
+                                         'weight_decay': 1e-06},
+               'larc_config': {'clip': False,
+                               'eps': 1e-08,
+                               'trust_coefficient': 0.001},
+               'layer_wise_lr_decay': {'decay': 0.9},
+               'momentum': 0.9,
+               'name': 'sgd',
+               'nesterov': False,
+               'non_regularized_parameters': [],
+               'num_epochs': 300,
+               'param_group_constructor': 'default',
+               'param_schedulers': {'lr': {'auto_lr_scaling': {'auto_scale': True,
+                                                               'base_lr_batch_size': 256,
+                                                               'base_value': 0.3,
+                                                               'scaling_type': 'linear'},
+                                           'end_value': 7.5e-05,
+                                           'interval_scaling': ['rescaled',
+                                                                'fixed'],
+                                           'lengths': [0.025, 0.975],
+                                           'milestones': [30, 60],
+                                           'name': 'cosine',
+                                           'schedulers': [{'end_value': 7.5e-05,
+                                                           'name': 'cosine',
+                                                           'start_value': 0.075}],
+                                           'start_value': 0.075,
+                                           'update_interval': 'step',
+                                           'value': 0.1,
+                                           'values': [0.1, 0.01, 0.001]},
+                                    'lr_head': {'auto_lr_scaling': {'auto_scale': True,
+                                                                    'base_lr_batch_size': 256,
+                                                                    'base_value': 0.3,
+                                                                    'scaling_type': 'linear'},
+                                                'end_value': 7.5e-05,
+                                                'interval_scaling': ['rescaled',
+                                                                     'fixed'],
+                                                'lengths': [0.025, 0.975],
+                                                'milestones': [30, 60],
+                                                'name': 'cosine',
+                                                'schedulers': [{'end_value': 7.5e-05,
+                                                                'name': 'cosine',
+                                                                'start_value': 0.075}],
+                                                'start_value': 0.075,
+                                                'update_interval': 'step',
+                                                'value': 0.1,
+                                                'values': [0.1, 0.01, 0.001]}},
+               'regularize_bias': True,
+               'regularize_bn': True,
+               'use_larc': True,
+               'use_zero': False,
+               'weight_decay': 1e-06},
+ 'PROFILING': {'MEMORY_PROFILING': {'TRACK_BY_LAYER_MEMORY': False},
+               'NUM_ITERATIONS': 10,
+               'OUTPUT_FOLDER': '.',
+               'PROFILED_RANKS': [0, 1],
+               'RUNTIME_PROFILING': {'LEGACY_PROFILER': False,
+                                     'PROFILE_CPU': True,
+                                     'PROFILE_GPU': True,
+                                     'USE_PROFILER': False},
+               'START_ITERATION': 0,
+               'STOP_TRAINING_AFTER_PROFILING': False,
+               'WARMUP_ITERATIONS': 0},
+ 'RANKING': {'APPLY_PCA': False,
+             'FEATURES': {'DATASET_NAME': '',
+                          'DATA_PARTITION': 'TRAIN',
+                          'LAYER_NAME': ''},
+             'NORMALIZE_FEATS': True,
+             'PCA_DIM': 128,
+             'RANKING_BACKEND': 'faiss',
+             'USE_GPU': False},
+ 'REPRODUCIBILITY': {'CUDDN_DETERMINISTIC': False},
+ 'SEED_VALUE': 0,
+ 'SLURM': {'ADDITIONAL_PARAMETERS': {},
+           'COMMENT': 'vissl job',
+           'CONSTRAINT': '',
+           'LOG_FOLDER': '.',
+           'MEM_GB': 250,
+           'NAME': 'vissl',
+           'NUM_CPU_PER_PROC': 8,
+           'PARTITION': '',
+           'PORT_ID': 40050,
+           'TIME_HOURS': 72,
+           'TIME_MINUTES': 0,
+           'USE_SLURM': False},
+ 'SVM': {'cls_list': [],
+         'costs': {'base': -1.0,
+                   'costs_list': [0.1, 0.01],
+                   'power_range': [4, 20]},
+         'cross_val_folds': 3,
+         'dual': True,
+         'force_retrain': False,
+         'loss': 'squared_hinge',
+         'low_shot': {'dataset_name': 'voc',
+                      'k_values': [1, 2, 4, 8, 16, 32, 64, 96],
+                      'sample_inds': [1, 2, 3, 4, 5]},
+         'max_iter': 2000,
+         'normalize': True,
+         'penalty': 'l2'},
+ 'SVM_FEATURES_PATH': '',
+ 'TEST_EVERY_NUM_EPOCH': 1,
+ 'TEST_MODEL': False,
+ 'TEST_ONLY': False,
+ 'TRAINER': {'TASK_NAME': 'self_supervision_task',
+             'TRAIN_STEP_NAME': 'standard_train_step'},
+ 'VERBOSE': False,
+ 'WEIGHTS_INIT': {'APPEND_PREFIX': 'trunk._feature_blocks.',
+                  'PARAMS_FILE': '/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_300e/vissl_160_to_200e/model_phase40.torch',
+                  'REMOVE_PREFIX': '',
+                  'SKIP_LAYERS': ['num_batches_tracked'],
+                  'STATE_DICT_KEY_NAME': 'classy_state_dict'}}
+INFO 2024-09-30 18:19:13,923 train.py: 117: System config:
+-------------------  --------------------------------------------------------------------------------------
+sys.platform         linux
+Python               3.8.16 (default, Jun 12 2023, 18:09:05) [GCC 11.2.0]
+numpy                1.24.4
+Pillow               9.3.0
+vissl                0.1.6 @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/vissl
+GPU available        True
+GPU 0                Tesla V100S-PCIE-32GB
+CUDA_HOME            /beegfs/apps/generic/cuda-11.7
+torchvision          0.9.1 @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/torchvision
+hydra                1.3.2 @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/hydra
+classy_vision        0.7.0.dev @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/classy_vision
+tensorboard          2.12.0
+apex                 0.1 @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/apex
+cv2                  4.10.0
+PyTorch              1.8.1 @/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/torch
+PyTorch debug build  False
+-------------------  --------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 7.3
+  - C++ Version: 201402
+  - Intel(R) oneAPI Math Kernel Library Version 2023.1-Product Build 20230303 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v1.7.0 (Git Hash 7aed236906b1f7a05c0917e5257a1af05e9ff683)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 10.2
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_37,code=compute_37
+  - CuDNN 7.6.5
+  - Magma 2.5.2
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=10.2, CUDNN_VERSION=7.6.5, CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/c++, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.8.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, 
+
+CPU info:
+-------------------  -------------------------------
+Architecture         x86_64
+CPU op-mode(s)       32-bit, 64-bit
+Byte Order           Little Endian
+CPU(s)               48
+On-line CPU(s) list  0-47
+Thread(s) per core   1
+Core(s) per socket   24
+Socket(s)            2
+NUMA node(s)         8
+Vendor ID            AuthenticAMD
+CPU family           23
+Model                49
+Model name           AMD EPYC 7402 24-Core Processor
+Stepping             0
+CPU MHz              2838.407
+CPU max MHz          2800.0000
+CPU min MHz          1500.0000
+BogoMIPS             5589.88
+Virtualization       AMD-V
+L1d cache            32K
+L1i cache            32K
+L2 cache             512K
+L3 cache             16384K
+NUMA node0 CPU(s)    0-5
+NUMA node1 CPU(s)    6-11
+NUMA node2 CPU(s)    12-17
+NUMA node3 CPU(s)    18-23
+NUMA node4 CPU(s)    24-29
+NUMA node5 CPU(s)    30-35
+NUMA node6 CPU(s)    36-41
+NUMA node7 CPU(s)    42-47
+-------------------  -------------------------------
+INFO 2024-09-30 18:19:14,036 trainer_main.py: 113: Using Distributed init method: tcp://localhost:40967, world_size: 1, rank: 0
+INFO 2024-09-30 18:19:14,038 distributed_c10d.py: 187: Added key: store_based_barrier_key:1 to store for rank: 0
+INFO 2024-09-30 18:19:14,038 trainer_main.py: 131: | initialized host gpu001 as rank 0 (0)
+gpu001:2006694:2006694 [0] NCCL INFO Bootstrap : Using [0]ib0:172.21.12.17<0>
+gpu001:2006694:2006694 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+gpu001:2006694:2006694 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB ; OOB ib0:172.21.12.17<0>
+gpu001:2006694:2006694 [0] NCCL INFO Using network IB
+NCCL version 2.7.8+cuda10.2
+gpu001:2006694:2006707 [0] NCCL INFO Channel 00/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 01/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 02/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 03/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 04/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 05/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 06/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 07/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 08/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 09/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 10/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 11/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 12/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 13/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 14/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 15/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 16/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 17/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 18/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 19/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 20/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 21/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 22/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 23/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 24/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 25/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 26/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 27/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 28/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 29/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 30/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Channel 31/32 :    0
+gpu001:2006694:2006707 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [1] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [2] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [3] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [4] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [5] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [6] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [7] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [8] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [9] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [10] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [11] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [12] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [13] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [14] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [15] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [16] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [17] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [18] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [19] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [20] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [21] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [22] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [23] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [24] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [25] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [26] -1/-1/-1->0->-1|-1->0->
+gpu001:2006694:2006707 [0] NCCL INFO Setting affinity for GPU 0 to 1000,00000000
+gpu001:2006694:2006707 [0] NCCL INFO 32 coll channels, 32 p2p channels, 32 p2p channels per peer
+gpu001:2006694:2006707 [0] NCCL INFO comm 0x1554400010f0 rank 0 nranks 1 cudaDev 0 busId 81000 - Init COMPLETE
+INFO 2024-09-30 18:19:25,381 train_task.py: 193: Setting AMP: using apex, args {'opt_level': 'O1'}
+INFO 2024-09-30 18:19:25,382 train_task.py: 180: Setting AMP: AmpType.APEX - args: {'opt_level': 'O1'}
+INFO 2024-09-30 18:19:25,382 train_task.py: 482: Building model....
+INFO 2024-09-30 18:19:25,383 resnext.py:  68: ResNeXT trunk, supports activation checkpointing. Deactivated
+INFO 2024-09-30 18:19:25,383 resnext.py:  93: Building model: ResNeXt50-1x64d-w1-BatchNorm2d
+INFO 2024-09-30 18:19:25,933 model_helpers.py: 197: Using SyncBN group size: 1
+INFO 2024-09-30 18:19:25,933 model_helpers.py: 201: Converting BN layers to Apex SyncBN
+INFO 2024-09-30 18:19:25,934 distributed_c10d.py: 187: Added key: store_based_barrier_key:2 to store for rank: 0
+INFO 2024-09-30 18:19:25,940 train_task.py: 755: Broadcast model BN buffers from primary on every forward pass
+INFO 2024-09-30 18:19:25,941 classification_task.py: 387: Synchronized Batch Normalization is disabled
+INFO 2024-09-30 18:19:25,968 default.py: 295: 
+Trainable params: 166, 
+Non-Trainable params: 0, 
+Trunk Regularized Parameters: 159, 
+Trunk Unregularized Parameters 0, 
+Head Regularized Parameters: 7, 
+Head Unregularized Parameters: 0 
+Remaining Regularized Parameters: 0 
+Remaining Unregularized Parameters: 0
+Selected optimization level O1:  Insert automatic casts around Pytorch functions and Tensor methods.
+
+Defaults for this optimization level are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+enabled                : True
+opt_level              : O1
+cast_model_type        : None
+patch_torch_functions  : True
+keep_batchnorm_fp32    : None
+master_weights         : None
+loss_scale             : dynamic
+INFO 2024-09-30 18:19:25,973 img_pil_color_distortion.py:  66: ImgPilColorDistortion | Using strength: 1.0
+INFO 2024-09-30 18:19:25,973 ssl_dataset.py: 158: Rank: 0 split: TRAIN Data files:
+['/home/tjian/Data/Flux/images_pretrain_200K/train']
+INFO 2024-09-30 18:19:25,974 ssl_dataset.py: 161: Rank: 0 split: TRAIN Label files:
+[]
+INFO 2024-09-30 18:19:27,959 disk_dataset.py:  96: Loaded 199782 samples from folder /home/tjian/Data/Flux/images_pretrain_200K/train
+INFO 2024-09-30 18:19:27,960 misc.py: 162: Set start method of multiprocessing to forkserver
+INFO 2024-09-30 18:19:27,961 __init__.py: 242: Created the Distributed Sampler....
+INFO 2024-09-30 18:19:27,961 __init__.py: 114: Distributed Sampler config:
+{'num_replicas': 1, 'rank': 0, 'epoch': 0, 'num_samples': 199782, 'total_size': 199782, 'shuffle': True, 'seed': 0}
+INFO 2024-09-30 18:19:28,025 __init__.py: 345: Wrapping the dataloader to async device copies
+INFO 2024-09-30 18:19:28,026 train_task.py: 409: Building loss...
+INFO 2024-09-30 18:19:28,026 trainer_main.py: 269: Training 300 epochs
+INFO 2024-09-30 18:19:28,027 trainer_main.py: 270: One epoch = 3121 iterations.
+INFO 2024-09-30 18:19:28,027 trainer_main.py: 271: Total 199782 samples in one epoch
+INFO 2024-09-30 18:19:28,027 trainer_main.py: 277: Total 936300 iterations for training
+INFO 2024-09-30 18:19:28,143 logger.py:  84: Mon Sep 30 18:19:28 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 555.42.02              Driver Version: 555.42.02      CUDA Version: 12.5     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   35C    P0             39W /  250W |    1258MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2006694      C   ...an/.conda/envs/vissl_env/bin/python       1254MiB |
++-----------------------------------------------------------------------------------------+
+
+INFO 2024-09-30 18:19:28,145 trainer_main.py: 174: Model is:
+ Classy <class 'vissl.models.base_ssl_model.BaseSSLMultiInputOutputModel'>:
+BaseSSLMultiInputOutputModel(
+  (_heads): ModuleDict()
+  (trunk): ResNeXt(
+    (_feature_blocks): ModuleDict(
+      (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv1_relu): ReLU(inplace=True)
+      (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+      (layer1): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer2): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer3): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (4): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (5): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer4): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(<SUPPORTED_L4_STRIDE.two: 2>, <SUPPORTED_L4_STRIDE.two: 2>), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(<SUPPORTED_L4_STRIDE.two: 2>, <SUPPORTED_L4_STRIDE.two: 2>), bias=False)
+            (1): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): SyncBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+      (flatten): Flatten()
+    )
+  )
+  (heads): ModuleList(
+    (0): SwAVPrototypesHead(
+      (projection_head): Sequential(
+        (0): Linear(in_features=2048, out_features=2048, bias=True)
+        (1): SyncBatchNorm(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU(inplace=True)
+        (3): Linear(in_features=2048, out_features=128, bias=True)
+      )
+      (prototypes0): Linear(in_features=128, out_features=3000, bias=False)
+    )
+  )
+)
+INFO 2024-09-30 18:19:28,145 trainer_main.py: 175: Loss is: { 'embedding_dim': 128,
+  'epsilon': 0.05,
+  'local_queue_length': 0,
+  'name': 'SwAVLoss',
+  'nmb_sinkhornknopp_iters': 3,
+  'num_crops': 8,
+  'num_prototypes': [3000],
+  'temp_hard_assignment_iters': 0,
+  'temperature': 0.1,
+  'use_double_precision': False}
+INFO 2024-09-30 18:19:28,145 trainer_main.py: 176: Starting training....
+INFO 2024-09-30 18:19:28,145 __init__.py: 114: Distributed Sampler config:
+{'num_replicas': 1, 'rank': 0, 'epoch': 0, 'num_samples': 199782, 'total_size': 199782, 'shuffle': True, 'seed': 0}
+/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:474: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/home/tjian/.conda/envs/vissl_env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:474: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+INFO 2024-09-30 18:22:44,630 trainer_main.py: 334: Phase advanced. Rank: 0
+INFO 2024-09-30 18:22:44,677 log_hooks.py:  78: ========= Memory Summary at on_phase_start =======
+|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |  190904 KB |  190904 KB |  190905 KB |     512 B  |
+|       from large pool |  171996 KB |  171996 KB |  171996 KB |       0 B  |
+|       from small pool |   18908 KB |   18908 KB |   18909 KB |     512 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |  190904 KB |  190904 KB |  190905 KB |     512 B  |
+|       from large pool |  171996 KB |  171996 KB |  171996 KB |       0 B  |
+|       from small pool |   18908 KB |   18908 KB |   18909 KB |     512 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |  227328 KB |  227328 KB |  227328 KB |       0 B  |
+|       from large pool |  204800 KB |  204800 KB |  204800 KB |       0 B  |
+|       from small pool |   22528 KB |   22528 KB |   22528 KB |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |   36423 KB |   41299 KB |  134550 KB |   98127 KB |
+|       from large pool |   32804 KB |   39716 KB |  117760 KB |   84956 KB |
+|       from small pool |    3619 KB |    3627 KB |   16790 KB |   13171 KB |
+|---------------------------------------------------------------------------|
+| Allocations           |     343    |     343    |     344    |       1    |
+|       from large pool |      27    |      27    |      27    |       0    |
+|       from small pool |     316    |     316    |     317    |       1    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     343    |     343    |     344    |       1    |
+|       from large pool |      27    |      27    |      27    |       0    |
+|       from small pool |     316    |     316    |     317    |       1    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      21    |      21    |      21    |       0    |
+|       from large pool |      10    |      10    |      10    |       0    |
+|       from small pool |      11    |      11    |      11    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      13    |      13    |      22    |       9    |
+|       from large pool |       9    |       9    |      10    |       1    |
+|       from small pool |       4    |       5    |      12    |       8    |
+|===========================================================================|
+
+
+INFO 2024-09-30 18:22:44,677 state_update_hooks.py: 116: Starting phase 0 [train]
+gpu001:2006694:2007403 [0] NCCL INFO Channel 00/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 01/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 02/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 03/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 04/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 05/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 06/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 07/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 08/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 09/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 10/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 11/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 12/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 13/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 14/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 15/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 16/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 17/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 18/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 19/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 20/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 21/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 22/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 23/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 24/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 25/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 26/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 27/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 28/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 29/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 30/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Channel 31/32 :    0
+gpu001:2006694:2007403 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [1] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [2] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [3] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [4] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [5] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [6] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [7] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [8] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [9] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [10] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [11] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [12] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [13] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [14] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [15] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [16] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [17] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [18] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [19] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [20] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [21] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [22] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [23] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [24] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [25] -1/-1/-1->0->-1|-1->0->-1/-1/-1 [26] -1/-1/-1->0->-1|-1->0->
+gpu001:2006694:2007403 [0] NCCL INFO Setting affinity for GPU 0 to 1000,00000000
+gpu001:2006694:2007403 [0] NCCL INFO 32 coll channels, 32 p2p channels, 32 p2p channels per peer
+gpu001:2006694:2007403 [0] NCCL INFO comm 0x1553840010f0 rank 0 nranks 1 cudaDev 0 busId 81000 - Init COMPLETE
+INFO 2024-09-30 18:22:55,047 log_hooks.py:  78: ========= Memory Summary at on_forward =======
+|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |    6001 MB |    9981 MB |   62567 MB |   56566 MB |
+|       from large pool |    5970 MB |    9951 MB |   62531 MB |   56561 MB |
+|       from small pool |      31 MB |      31 MB |      35 MB |       4 MB |
+|---------------------------------------------------------------------------|
+| Active memory         |    6001 MB |    9981 MB |   62567 MB |   56566 MB |
+|       from large pool |    5970 MB |    9951 MB |   62531 MB |   56561 MB |
+|       from small pool |      31 MB |      31 MB |      35 MB |       4 MB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   10210 MB |   11634 MB |   33030 MB |   22820 MB |
+|       from large pool |   10176 MB |   11602 MB |   32996 MB |   22820 MB |
+|       from small pool |      34 MB |      34 MB |      34 MB |       0 MB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  176687 KB |    2856 MB |   34553 MB |   34381 MB |
+|       from large pool |  173932 KB |    2854 MB |   34522 MB |   34353 MB |
+|       from small pool |    2755 KB |       4 MB |      30 MB |      28 MB |
+|---------------------------------------------------------------------------|
+| Allocations           |     952    |     953    |    2723    |    1771    |
+|       from large pool |     265    |     266    |     424    |     159    |
+|       from small pool |     687    |     687    |    2299    |    1612    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     952    |     953    |    2723    |    1771    |
+|       from large pool |     265    |     266    |     424    |     159    |
+|       from small pool |     687    |     687    |    2299    |    1612    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      41    |      41    |      55    |      14    |
+|       from large pool |      24    |      25    |      38    |      14    |
+|       from small pool |      17    |      17    |      17    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      40    |      44    |    1357    |    1317    |
+|       from large pool |      15    |      20    |      49    |      34    |
+|       from small pool |      25    |      29    |    1308    |    1283    |
+|===========================================================================|
+
+
+INFO 2024-09-30 18:22:57,444 log_hooks.py:  78: ========= Memory Summary at on_backward =======
+|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |  386510 KB |   10054 MB |  165932 MB |  165554 MB |
+|       from large pool |  348692 KB |   10022 MB |  165766 MB |  165426 MB |
+|       from small pool |   37818 KB |      54 MB |     165 MB |     128 MB |
+|---------------------------------------------------------------------------|
+| Active memory         |  386510 KB |   10054 MB |  165932 MB |  165554 MB |
+|       from large pool |  348692 KB |   10022 MB |  165766 MB |  165426 MB |
+|       from small pool |   37818 KB |      54 MB |     165 MB |     128 MB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    6056 MB |   11634 MB |   42638 MB |   36582 MB |
+|       from large pool |    6002 MB |   11602 MB |   42548 MB |   36546 MB |
+|       from small pool |      54 MB |      66 MB |      90 MB |      36 MB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |    5398 MB |    5624 MB |  130795 MB |  125396 MB |
+|       from large pool |    5389 MB |    5615 MB |  130605 MB |  125216 MB |
+|       from small pool |       9 MB |      12 MB |     189 MB |     180 MB |
+|---------------------------------------------------------------------------|
+| Allocations           |     524    |     990    |    4615    |    4091    |
+|       from large pool |      55    |     269    |    1172    |    1117    |
+|       from small pool |     469    |     725    |    3443    |    2974    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     524    |     990    |    4615    |    4091    |
+|       from large pool |      55    |     269    |    1172    |    1117    |
+|       from small pool |     469    |     725    |    3443    |    2974    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      48    |      57    |      89    |      41    |
+|       from large pool |      21    |      25    |      44    |      23    |
+|       from small pool |      27    |      33    |      45    |      18    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |     117    |     117    |    2541    |    2424    |
+|       from large pool |      28    |      28    |     320    |     292    |
+|       from small pool |      89    |      89    |    2221    |    2132    |
+|===========================================================================|
+
+
+INFO 2024-09-30 18:22:57,480 log_hooks.py:  78: ========= Memory Summary at on_update =======
+|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |  496414 KB |   10054 MB |  166159 MB |  165674 MB |
+|       from large pool |  439956 KB |   10022 MB |  165956 MB |  165526 MB |
+|       from small pool |   56458 KB |      55 MB |     202 MB |     147 MB |
+|---------------------------------------------------------------------------|
+| Active memory         |  496414 KB |   10054 MB |  166159 MB |  165674 MB |
+|       from large pool |  439956 KB |   10022 MB |  165956 MB |  165526 MB |
+|       from small pool |   56458 KB |      55 MB |     202 MB |     147 MB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    6062 MB |   11634 MB |   42644 MB |   36582 MB |
+|       from large pool |    6002 MB |   11602 MB |   42548 MB |   36546 MB |
+|       from small pool |      60 MB |      66 MB |      96 MB |      36 MB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |    5325 MB |    5624 MB |  130933 MB |  125608 MB |
+|       from large pool |    5320 MB |    5615 MB |  130717 MB |  125397 MB |
+|       from small pool |       4 MB |      12 MB |     216 MB |     211 MB |
+|---------------------------------------------------------------------------|
+| Allocations           |     688    |     990    |    6530    |    5842    |
+|       from large pool |      72    |     269    |    1210    |    1138    |
+|       from small pool |     616    |     725    |    5320    |    4704    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     688    |     990    |    6530    |    5842    |
+|       from large pool |      72    |     269    |    1210    |    1138    |
+|       from small pool |     616    |     725    |    5320    |    4704    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      51    |      57    |      92    |      41    |
+|       from large pool |      21    |      25    |      44    |      23    |
+|       from small pool |      30    |      33    |      48    |      18    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      60    |     117    |    4146    |    4086    |
+|       from large pool |      22    |      28    |     337    |     315    |
+|       from small pool |      38    |      89    |    3809    |    3771    |
+|===========================================================================|
+
+
+INFO 2024-09-30 18:22:57,481 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 0; lr: 0.075; loss: 8.1281; btime(ms): 0; eta: 0:00:00; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:22:57,784 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 1; lr: 0.075; loss: 8.35152; btime(ms): 209508; eta: 2270 days, 9:34:49; peak_mem(M): 10054; weight_decay: [1e-06, 0.0]; max_iterations: 936300;
+INFO 2024-09-30 18:22:58,980 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 5; lr: 0.075; loss: 8.34406; btime(ms): 42129; eta: 456 days, 13:06:04; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:02,263 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 10; lr: 0.075; loss: 8.2813; btime(ms): 21342; eta: 231 days, 6:52:22; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32768.0
+INFO 2024-09-30 18:23:06,259 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 15; lr: 0.075; loss: 8.2607; btime(ms): 14504; eta: 157 days, 4:14:31; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:11,795 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 20; lr: 0.075; loss: 8.24926; btime(ms): 11150; eta: 120 days, 19:53:58; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:17,973 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 25; lr: 0.075; loss: 8.24394; btime(ms): 9061; eta: 98 days, 4:43:16; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:22,918 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 30; lr: 0.075; loss: 8.22348; btime(ms): 7805; eta: 84 days, 13:59:15; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:29,637 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 35; lr: 0.075; loss: 8.20647; btime(ms): 6877; eta: 74 days, 12:39:44; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:33,788 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 40; lr: 0.075; loss: 8.19807; btime(ms): 6125; eta: 66 days, 9:11:14; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:40,147 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 45; lr: 0.075; loss: 8.21782; btime(ms): 5588; eta: 60 days, 13:27:10; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:47,357 logger.py:  84: Mon Sep 30 18:23:46 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 555.42.02              Driver Version: 555.42.02      CUDA Version: 12.5     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100S-PCIE-32GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   41C    P0             57W /  250W |    7758MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2006694      C   ...an/.conda/envs/vissl_env/bin/python       7752MiB |
++-----------------------------------------------------------------------------------------+
+
+INFO 2024-09-30 18:23:48,302 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 50; lr: 0.075; loss: 8.21028; btime(ms): 5150; eta: 55 days, 19:23:53; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:52,661 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 55; lr: 0.075; loss: 8.2023; btime(ms): 4796; eta: 51 days, 23:21:50; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:23:59,279 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 60; lr: 0.075; loss: 8.18443; btime(ms): 4499; eta: 48 days, 18:14:26; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:04,023 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 65; lr: 0.075; loss: 8.19827; btime(ms): 4224; eta: 45 days, 18:38:13; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:09,686 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 70; lr: 0.075; loss: 8.214; btime(ms): 4015; eta: 43 days, 12:21:47; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:16,908 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 75; lr: 0.075; loss: 8.13025; btime(ms): 3841; eta: 41 days, 14:55:55; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:20,395 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 80; lr: 0.075; loss: 8.09891; btime(ms): 3645; eta: 39 days, 11:58:08; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:27,922 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 85; lr: 0.075; loss: 8.13329; btime(ms): 3521; eta: 38 days, 3:41:34; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:35,442 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 90; lr: 0.075; loss: 8.14801; btime(ms): 3380; eta: 36 days, 15:11:16; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:38,534 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 95; lr: 0.075; loss: 8.13582; btime(ms): 3263; eta: 35 days, 8:36:24; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:46,767 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 100; lr: 0.075; loss: 8.11507; btime(ms): 3181; eta: 34 days, 11:19:35; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:24:57,707 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 110; lr: 0.075; loss: 8.05958; btime(ms): 2991; eta: 32 days, 10:00:42; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:25:08,826 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 120; lr: 0.075; loss: 8.03933; btime(ms): 2831; eta: 30 days, 16:18:47; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:25:22,525 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 130; lr: 0.075; loss: 8.04218; btime(ms): 2699; eta: 29 days, 6:07:01; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:25:34,518 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 140; lr: 0.075; loss: 7.97351; btime(ms): 2610; eta: 28 days, 6:52:48; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16384.0
+INFO 2024-09-30 18:25:44,603 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 150; lr: 0.075; loss: 7.9529; btime(ms): 2503; eta: 27 days, 2:59:45; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:25:56,403 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 160; lr: 0.075; loss: 7.9978; btime(ms): 2420; eta: 26 days, 5:25:07; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:26:09,666 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 170; lr: 0.075; loss: 7.95917; btime(ms): 2341; eta: 25 days, 8:49:59; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:26:20,905 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 180; lr: 0.075; loss: 7.97003; btime(ms): 2290; eta: 24 days, 19:43:55; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:26:32,119 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 190; lr: 0.075; loss: 8.04281; btime(ms): 2227; eta: 24 days, 3:11:23; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:26:42,885 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 200; lr: 0.075; loss: 7.88625; btime(ms): 2170; eta: 23 days, 12:26:30; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:26:57,371 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 210; lr: 0.075; loss: 8.00502; btime(ms): 2118; eta: 22 days, 22:45:29; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:27:08,240 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 220; lr: 0.075; loss: 7.94331; btime(ms): 2089; eta: 22 days, 15:21:03; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:27:19,916 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 230; lr: 0.075; loss: 7.9858; btime(ms): 2049; eta: 22 days, 4:49:07; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:27:30,924 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 240; lr: 0.075; loss: 7.91602; btime(ms): 2009; eta: 21 days, 18:32:11; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:27:44,950 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 250; lr: 0.075; loss: 7.84832; btime(ms): 1975; eta: 21 days, 9:42:49; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:27:55,374 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 260; lr: 0.075; loss: 7.95464; btime(ms): 1948; eta: 21 days, 2:36:57; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:06,946 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 270; lr: 0.075; loss: 7.87475; btime(ms): 1918; eta: 20 days, 18:44:44; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:18,245 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 280; lr: 0.075; loss: 7.95691; btime(ms): 1891; eta: 20 days, 11:41:40; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:31,668 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 290; lr: 0.075; loss: 7.8639; btime(ms): 1860; eta: 20 days, 3:37:49; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:43,022 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 300; lr: 0.075; loss: 7.93374; btime(ms): 1846; eta: 20 days, 0:09:31; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:53,843 log_hooks.py: 297: Rank: 0; [ep: 0] iter: 310; lr: 0.075; loss: 7.86764; btime(ms): 1822; eta: 19 days, 17:46:29; peak_mem(M): 10054; weight_decay: [1e-06, 0.0];
+INFO 2024-09-30 18:28:56,158 state_update_hooks.py: 240: No parameters grad removed from now on: 313
