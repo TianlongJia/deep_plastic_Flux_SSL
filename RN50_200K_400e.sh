@@ -32,9 +32,9 @@ srun python tools/run_distributed_engines_200K.py \
   config.DATA.TRAIN.BATCHSIZE_PER_REPLICA=64 \
   config.OPTIMIZER.num_epochs=400 \
   config.OPTIMIZER.param_schedulers.lr.lengths="[0.025, 0.975]" \
-  config.CHECKPOINT.DIR="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_400e/vissl_180_to" \
+  config.CHECKPOINT.DIR="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_400e/vissl_380_to" \
   config.HOOKS.TENSORBOARD_SETUP.USE_TENSORBOARD=False \
-  config.WEIGHTS_INIT.PARAMS_FILE="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_400e/vissl_140_to_180e/model_phase40.torch" \
+  config.WEIGHTS_INIT.PARAMS_FILE="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_200K_400e/vissl_340_to_380e/model_phase40.torch" \
   config.WEIGHTS_INIT.APPEND_PREFIX="trunk._feature_blocks." \
   config.DISTRIBUTED.NUM_PROC_PER_NODE=1
   

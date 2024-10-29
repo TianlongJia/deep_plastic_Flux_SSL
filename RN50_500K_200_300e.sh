@@ -30,11 +30,11 @@ srun python tools/run_distributed_engines_500K.py \
   config.DATA.TRAIN.DATA_SOURCES=[disk_folder] \
   config.DATA.TRAIN.DATA_PATHS=["/scratch/tjian/Data/Flux/images_pretrain_500K/train"] \
   config.DATA.TRAIN.BATCHSIZE_PER_REPLICA=64 \
-  config.OPTIMIZER.num_epochs=100 \
+  config.OPTIMIZER.num_epochs=10 \
   config.OPTIMIZER.param_schedulers.lr.lengths="[0.025, 0.975]" \
-  config.CHECKPOINT.DIR="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/vissl_200_to" \
+  config.CHECKPOINT.DIR="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/vissl_290_to" \
   config.HOOKS.TENSORBOARD_SETUP.USE_TENSORBOARD=False \
-  config.WEIGHTS_INIT.PARAMS_FILE="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/vissl_185_to_200e/model_phase15.torch" \
+  config.WEIGHTS_INIT.PARAMS_FILE="/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/vissl_275_to_290e/model_final_checkpoint_phase14.torch" \
   config.WEIGHTS_INIT.APPEND_PREFIX="trunk._feature_blocks." \
   config.DISTRIBUTED.NUM_PROC_PER_NODE=1
   

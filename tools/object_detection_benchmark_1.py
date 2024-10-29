@@ -110,16 +110,9 @@ def main(args):
     register_coco_instances("Jur_train", {}, "/scratch/tjian/Data/Jur/annotations/train_coco.json", "/scratch/tjian/Data/Jur/train/")
     register_coco_instances("Jur_val", {}, "/scratch/tjian/Data/Jur/annotations/val_coco.json", "/scratch/tjian/Data/Jur/val/")
 
-    # Flux_train (train:val=80%:20%)
-    register_coco_instances("Flux_train", {}, "/scratch/tjian/Data/Flux/labeled_images/annotations/train.json", "/scratch/tjian/Data/Flux/labeled_images/train/")
-    register_coco_instances("Flux_val", {}, "/scratch/tjian/Data/Flux/labeled_images/annotations/val.json", "/scratch/tjian/Data/Flux/labeled_images/val/")
     
-    # 0609_1_round_SF
-    register_coco_instances("0609_1_round_train", {}, "/scratch/tjian/Data/Flux/TUD_Vietnam/0609_1_round_SF/annotations/train.json", "/scratch/tjian/Data/Flux/TUD_Vietnam/0609_1_round_SF/train/")
-    register_coco_instances("0609_1_round_val", {}, "/scratch/tjian/Data/Flux/TUD_Vietnam/0609_1_round_SF/annotations/val.json", "/scratch/tjian/Data/Flux/TUD_Vietnam/0609_1_round_SF/val/")
+    ################  Exp 1  ################ 
 
-    # the below datasets are new subsets divided from "Flux_train"
-    
     # Flux_train_100per
     register_coco_instances("Flux_train_100per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Train_100per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Train_100per/")
     register_coco_instances("Flux_val_100per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Val_100per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Val_100per/")
@@ -136,12 +129,24 @@ def main(args):
     register_coco_instances("Flux_train_10per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Train_10per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Train_10per/")
     register_coco_instances("Flux_val_10per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Val_10per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Val_10per/")
     
-    # Flux_train_added_0609_datat (original train:val=80%:20%)
-    register_coco_instances("Flux_train_ANI", {}, "/scratch/tjian/Data/Flux/labeled_and_added_new/annotations/train.json", "/scratch/tjian/Data/Flux/labeled_and_added_new/train/")
-    register_coco_instances("Flux_val_ANI", {}, "/scratch/tjian/Data/Flux/labeled_and_added_new/annotations/val.json", "/scratch/tjian/Data/Flux/labeled_and_added_new/val/")
-    
+    ################  Exp 2  ################ 
 
-   
+    # Baseline: Flux_train (train:val=80%:20%)
+    register_coco_instances("Flux_train", {}, "/scratch/tjian/Data/Flux/labeled_images/annotations/train.json", "/scratch/tjian/Data/Flux/labeled_images/train/")
+    register_coco_instances("Flux_val", {}, "/scratch/tjian/Data/Flux/labeled_images/annotations/val.json", "/scratch/tjian/Data/Flux/labeled_images/val/")
+    
+    # Flux_train_added_0609_data (original train:val=80%:20%)
+    register_coco_instances("Flux_train_ANI_TV", {}, "/scratch/tjian/Data/Flux/ANI_TV/annotations/train.json", "/scratch/tjian/Data/Flux/ANI_TV/train/")
+    register_coco_instances("Flux_val_ANI_TV", {}, "/scratch/tjian/Data/Flux/ANI_TV/annotations/val.json", "/scratch/tjian/Data/Flux/ANI_TV/val/")
+    
+    # Flux_train_added_TV_WV (original train:val=80%:20%)
+    register_coco_instances("Flux_train_ANI_TV_WV", {}, "/scratch/tjian/Data/Flux/ANI_TV_WV/annotations/train.json", "/scratch/tjian/Data/Flux/ANI_TV_WV/train/")
+    register_coco_instances("Flux_val_ANI_TV_WV", {}, "/scratch/tjian/Data/Flux/ANI_TV_WV/annotations/val.json", "/scratch/tjian/Data/Flux/ANI_TV_WV/val/")
+    
+    # Few_shot fine-tune using 0609 (640 and 1280 tiles)
+    register_coco_instances("FS_train_0609", {}, "/scratch/tjian/Data/Flux/TUD_Vietnam/0609/Fine_tune/annotations/train.json", "/scratch/tjian/Data/Flux/TUD_Vietnam/0609/Fine_tune/train/")
+    register_coco_instances("FS_val_0609", {}, "/scratch/tjian/Data/Flux/TUD_Vietnam/0609/Fine_tune/annotations/val.json", "/scratch/tjian/Data/Flux/TUD_Vietnam/0609/Fine_tune/val/")
+    
     
     # setup the config file
     cfg = get_cfg()

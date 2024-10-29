@@ -25,7 +25,7 @@ previous=$(/usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utili
 conda activate vissl_env
 srun python tools/object_detection_benchmark_1.py \
     --config-file /scratch/tjian/PythonProject/deep_plastic_Flux_SSL/configs/config/benchmark/object_detection/COCOInstance/R50_C4_COCO/tiles_224/Flux/FRC_50_60per.yaml \
-     --num-gpus 1 SOLVER.MAX_ITER 16925 TEST.EVAL_PERIOD 169 SOLVER.IMS_PER_BATCH 4 MODEL.BACKBONE.FREEZE_AT 4 MODEL.WEIGHTS /scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/detectron2_200e/RN50_500K_200e.torch OUTPUT_DIR /scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/Exp1/RN50_500K_200e/SSL_60per/
+     --num-gpus 1 SOLVER.MAX_ITER 16925 TEST.EVAL_PERIOD 169 SOLVER.IMS_PER_BATCH 4 MODEL.BACKBONE.FREEZE_AT 4 MODEL.WEIGHTS /scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/detectron2_200e/RN50_500K_200e.torch OUTPUT_DIR /scratch/tjian/PythonProject/deep_plastic_Flux_SSL/checkpoint/train_weights/RN50_500K/Exp1/RN50_500K_200e/SSL_60per_10/
 
 
 
