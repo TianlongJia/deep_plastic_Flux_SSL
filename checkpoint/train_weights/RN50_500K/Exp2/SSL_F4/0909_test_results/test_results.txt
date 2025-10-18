@@ -1,2 +1,0 @@
-No predictions from the model!
-OrderedDict([('bbox', {'AP': nan, 'AP50': nan, 'AP75': nan, 'APs': nan, 'APm': nan, 'APl': nan})])

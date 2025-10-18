@@ -34,7 +34,7 @@ from detectron2.engine.train_loop import HookBase
 import logging
 
 
-sys.path.append('/scratch/tjian/PythonProject/deep_plastic_SSL/')
+sys.path.append('/scratch/tjian/PythonProject/deep_plastic_Flux_SSL/')
 
 
 @ROI_HEADS_REGISTRY.register()
@@ -105,32 +105,8 @@ def main(args):
     torch.cuda.empty_cache()
 
     # register my custom dataset, if your dataset is in COCO format:
-    
-    register_coco_instances("Jakarta_train", {}, "/scratch/tjian/Data/Jakarta_coco/annotations/instances_train_DelftBlue.json", "/scratch/tjian/Data/Jakarta_coco/train/")
-    register_coco_instances("Jakarta_val", {}, "/scratch/tjian/Data/Jakarta_coco/annotations/instances_val_DelftBlue.json", "/scratch/tjian/Data/Jakarta_coco/val/")
-    
-    # GJO_train_2050
-    register_coco_instances("GJO_train_2050", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_2050/annotations/SL_train_2050.json", "/scratch/tjian/Data/GJO_SSL/SL_train_2050/train/")
-    register_coco_instances("GJO_val_2050", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_2050/annotations/SL_val_199.json", "/scratch/tjian/Data/GJO_SSL/SL_train_2050/val/")
-    
-    # GJO_train_1626
-    register_coco_instances("GJO_train_1626", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_1626/annotations/SL_train_1626.json", "/scratch/tjian/Data/GJO_SSL/SL_train_1626/train/")
-    register_coco_instances("GJO_val_1626", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_1626/annotations/SL_val_161.json", "/scratch/tjian/Data/GJO_SSL/SL_train_1626/val/")
-    
-    # GJO_train_1243
-    register_coco_instances("GJO_train_1243", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_1243/annotations/SL_train_1243.json", "/scratch/tjian/Data/GJO_SSL/SL_train_1243/train/")
-    register_coco_instances("GJO_val_1243", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_1243/annotations/SL_val_118.json", "/scratch/tjian/Data/GJO_SSL/SL_train_1243/val/")
-    
-    # GJO_train_778
-    register_coco_instances("GJO_train_778", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_778/annotations/SL_train_778.json", "/scratch/tjian/Data/GJO_SSL/SL_train_778/train/")
-    register_coco_instances("GJO_val_778", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_778/annotations/SL_val_81.json", "/scratch/tjian/Data/GJO_SSL/SL_train_778/val/")
-    
-    # GJO_train_411
-    register_coco_instances("GJO_train_411", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_411/annotations/SL_train_411.json", "/scratch/tjian/Data/GJO_SSL/SL_train_411/train/")
-    register_coco_instances("GJO_val_411", {}, "/scratch/tjian/Data/GJO_SSL/SL_train_411/annotations/SL_val_40.json", "/scratch/tjian/Data/GJO_SSL/SL_train_411/val/")
-
-
-    
+    register_coco_instances("Flux_train_100per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Train_100per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Train_100per/")
+    register_coco_instances("Flux_val_100per", {}, "/scratch/tjian/Data/Flux/labeled_images_new/annotations/Val_100per.json", "/scratch/tjian/Data/Flux/labeled_images_new/Val_100per/")
     
     # setup the config file
     cfg = get_cfg()
