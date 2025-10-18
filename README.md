@@ -43,4 +43,4 @@ XXXXX
 
 ## Contact
 
-➡️ Tianlong Jia ([T.Jia@tudelft.nl](mailto:tianlong.jia@kit.edu))
+➡️ Tianlong Jia ([tianlong.jia@kit.edu](mailto:tianlong.jia@kit.edu))
