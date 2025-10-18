@@ -8,9 +8,11 @@ This repository contains the code used for the following publication:
 The aim of this study is to propose a semi-supervised learning (SSL)-based framework for quantifying floating litter fluxes in rivers. This repository contains the code for developing the SSL model and performing inference using the Slicing Aided Hyper Inference (SAHI) method. More details of these methods can be found in these repositories: (1) [SSL](https://github.com/TianlongJia/deep_plastic_SSL), and (2) [SAHI](https://github.com/obss/sahi). For comparison, we also evaluate the same Faster R-CNN architecture trained solely with supervised learning (SL) and initialized with ImageNet pre-trained weights. 
 
 ![summary_figure](figures/SSL.jpg)
+
 Figure 1. The schematic diagram of the two-stage semi-supervised learning method.
 
 ![summary_figure](figures/SAHI.png)
+
 Figure 2. The schematic illustration of SAHI for detecting floating litter.
 
 Acknowledgement:
