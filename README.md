@@ -9,7 +9,7 @@ The aim of this study is to propose a semi-supervised learning (SSL)-based frame
 
 ![summary_figure](figures/SSL.jpg)
 
-![summary_figure](figures/SAHI.jpg)
+![summary_figure](figures/SAHI.png)
 
 Acknowledgement:
 
