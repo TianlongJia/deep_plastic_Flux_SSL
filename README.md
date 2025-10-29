@@ -2,7 +2,7 @@
 
 This repository contains the code used for the following publication:
 ```bash
-  XXXXXXXX
+  Jia, T., Taormina, R., de Vries, R., Kapelan, Z., van Emmerik, T. H., Vriend, P., & Okkerman, I. (2025). A semi-supervised learning-based framework for quantifying litter fluxes in river systems. Water Research, 124833.
 ```
 
 The aim of this study is to propose a semi-supervised learning (SSL)-based framework for quantifying floating litter fluxes in rivers. This repository contains the code for developing the SSL model and performing inference using the Slicing Aided Hyper Inference (SAHI) method. More details of these methods can be found in these repositories: (1) [SSL](https://github.com/TianlongJia/deep_plastic_SSL), and (2) [SAHI](https://github.com/obss/sahi). For comparison, we also evaluate the same Faster R-CNN architecture trained solely with supervised learning (SL) and initialized with ImageNet pre-trained weights. 
@@ -38,7 +38,14 @@ See [`INSTALL.md`](./INSTALL.md).
 If you find this project is useful in your research or wish to refer to the paper, please use the following BibTeX entry.
 
 ```BibTeX
-XXXXX
+@article{jia2025semi,
+  title={A semi-supervised learning-based framework for quantifying litter fluxes in river systems},
+  author={Jia, Tianlong and Taormina, Riccardo and de Vries, Rinze and Kapelan, Zoran and van Emmerik, Tim HM and Vriend, Paul and Okkerman, Imke},
+  journal={Water Research},
+  pages={124833},
+  year={2025},
+  publisher={Elsevier}
+}
 ```
 
 ## Contact
