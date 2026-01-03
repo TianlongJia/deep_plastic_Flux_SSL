@@ -32,6 +32,9 @@ See [`INSTALL.md`](./INSTALL.md).
 -  Step 4：Evaluate model performnaces on test sets for object detection using SAHI (see `main_Evaluate_Object_Detection_with_SAHI.ipynb`).
 -  Step 5: Output confusion matrix on test sets for object detection, e.g., TP, FP, and FN (see `main_Confusion_matrix_OD.ipynb`).
 
+## Model weights
+
+The trained model weight files from this pubilication can be found [here](https://doi.org/10.5281/zenodo.18141160)
 
 ## Citing this project or paper
 
