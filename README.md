@@ -35,7 +35,7 @@ See [`INSTALL.md`](./INSTALL.md).
 ## Model weights
 
 The trained model weight files from this pubilication can be found [here](https://doi.org/10.5281/zenodo.18141160).
-。
+
 ## Citing this project or paper
 
 If you find this project is useful in your research or wish to refer to the paper, please use the following BibTeX entry.
