@@ -39,6 +39,9 @@ The trained model weight files from this pubilication can be found [here](https:
 ## Citing this project or paper
 
 If you find this project is useful in your research or wish to refer to the paper, please use the following BibTeX entry.
+```bash
+Jia, T., Taormina, R., de Vries, R., Kapelan, Z., van Emmerik, T. H., Vriend, P., & Okkerman, I. (2025). A semi-supervised learning-based framework for quantifying litter fluxes in river systems. Water Research, 124833.
+```
 
 ```BibTeX
 @article{jia2025semi,
